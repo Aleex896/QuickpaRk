@@ -18,7 +18,10 @@ public class RegistroActivity extends AppCompatActivity {
 
         Button bVolver = (Button) findViewById(R.id.bVolver);
         TextView tVRegi = (TextView) findViewById(R.id.tVRegi);
+        TextView tVDatosUs = (TextView) findViewById(R.id.tVDatosUsu);
+
         tVRegi.setTypeface(myFont(this));
+        tVDatosUs.setTypeface(myFont(this));
 
         bVolver.setOnClickListener(new View.OnClickListener() {
             @Override

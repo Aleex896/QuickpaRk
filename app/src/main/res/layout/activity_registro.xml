@@ -7,8 +7,6 @@
     android:background="@color/Azul"
     tools:context="com.example.alex.quickpark.RegistroActivity">
 
-
-
         <Button
             android:id="@+id/bVolver"
             android:layout_width="80px"
@@ -41,7 +39,7 @@
             android:layout_gravity="left"
             android:layout_below="@+id/bVolver"
             android:text="Datos de Usuario"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="15dp"
             android:textAllCaps="false"
             android:textColor="@color/blanco" />
@@ -51,8 +49,8 @@
             android:layout_width="match_parent"
             android:layout_gravity="left"
             android:layout_height="1dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
             android:layout_marginTop="5dp"
             android:background="@color/blanco"
             android:layout_below="@id/tVDatosUsu">
