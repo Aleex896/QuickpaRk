@@ -9,31 +9,52 @@
 
 
 
-    <Button
-        android:id="@+id/bVolver"
-        android:layout_width="54dp"
-        android:layout_height="49dp"
-        android:background="@drawable/flecha_izquierda"
-        tools:layout_editor_absoluteX="37dp"
-        tools:layout_editor_absoluteY="26dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="18dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="17dp" />
+        <Button
+            android:id="@+id/bVolver"
+            android:layout_width="80px"
+            android:layout_height="80px"
+            android:background="@drawable/flecha_izquierda"
+            tools:layout_editor_absoluteX="37dp"
+            tools:layout_editor_absoluteY="26dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="18dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="17dp" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="25dp"
-        android:layout_marginStart="17dp"
-        android:text="Regístrate"
-        android:layout_alignBaseline="@+id/bVolver"
-        android:layout_alignBottom="@+id/bVolver"
-        android:layout_toEndOf="@+id/bVolver" />
+        <TextView
+            android:id="@+id/tVRegi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/bVolver"
+            android:layout_marginStart="14dp"
+            android:layout_toEndOf="@+id/bVolver"
+            android:text="Regístrate"
+            android:textColor="@color/blanco"
+            android:textSize="25dp" />
 
+        <TextView
+            android:id="@+id/tVDatosUsu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_below="@+id/bVolver"
+            android:text="Datos de Usuario"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:textAllCaps="false"
+            android:textColor="@color/blanco" />
 
-
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_gravity="left"
+            android:layout_height="1dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/blanco"
+            android:layout_below="@id/tVDatosUsu">
+        </View>
 </RelativeLayout>
