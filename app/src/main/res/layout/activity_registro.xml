@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/Azul"
     tools:context="com.example.alex.quickpark.RegistroActivity">
 
 
@@ -14,20 +14,25 @@
         android:layout_width="54dp"
         android:layout_height="49dp"
         android:background="@drawable/flecha_izquierda"
-        android:layout_margin="10dp"
         tools:layout_editor_absoluteX="37dp"
-        tools:layout_editor_absoluteY="26dp" />
+        tools:layout_editor_absoluteY="26dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="18dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="17dp" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/bVolver"
         android:textSize="25dp"
-        android:layout_marginBottom="14dp"
-        android:layout_marginStart="47dp"
-        android:layout_toEndOf="@+id/bVolver"
-        android:text="TextView" />
+        android:layout_marginStart="17dp"
+        android:text="Regístrate"
+        android:layout_alignBaseline="@+id/bVolver"
+        android:layout_alignBottom="@+id/bVolver"
+        android:layout_toEndOf="@+id/bVolver" />
 
 
 

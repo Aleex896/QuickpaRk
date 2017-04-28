@@ -1,6 +1,8 @@
 package com.example.alex.quickpark;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -14,6 +16,9 @@ public class FirstScreen extends AppCompatActivity {
         setContentView(R.layout.activity_registro_login);
 
         Button botonregistro = (Button) findViewById(R.id.bCrearCuent);
+
+        botonregistro.setTypeface(myFont(this));
+
         botonregistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -22,6 +27,11 @@ public class FirstScreen extends AppCompatActivity {
             }
         });
     }
+
+    public static Typeface myFont(Context context) {
+        return Typeface.createFromAsset(context.getAssets(), "fonts/Walkway SemiBold.ttf");
+    }
+
 
     @Override
     protected void onResume() {

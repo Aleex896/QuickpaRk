@@ -1,33 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
+    tools:context="com.example.alex.quickpark.FirstScreen"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.alex.quickpark.FirstScreen">
-
-    <Button
-        android:id="@+id/bIniSes"
-        style="@android:style/Widget.Material.Light.Button"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_gravity="bottom"
-        android:layout_marginBottom="5dp"
-        android:layout_weight="1"
-        android:text="Iniciar Sesión" />
+        android:layout_centerVertical="true"
+        app:srcCompat="@drawable/logotexto" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
 
-    <Button
-        android:id="@+id/bCrearCuent"
-        style="@android:style/Widget.Material.Light.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="bottom"
-        android:layout_marginBottom="5dp"
-        android:layout_weight="1"
-        android:text="Crear Cuenta" />
+        <Button
+            android:id="@+id/bIniSes"
+            style="@android:style/Widget.Material.Light.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:fontFamily="w"
+            android:text="Iniciar Sesión" />
 
-</LinearLayout>
+
+
+        <Button
+            android:id="@+id/bCrearCuent"
+            style="@android:style/Widget.Material.Light.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:text="Crear Cuenta" />
+
+    </LinearLayout>
+</RelativeLayout>
+
