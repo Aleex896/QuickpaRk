@@ -15,11 +15,14 @@ public class FirstScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_login);
 
-        Button botonregistro = (Button) findViewById(R.id.bCrearCuent);
 
-        botonregistro.setTypeface(myFont(this));
+        // ASIGNACION DE LAS FUENTES A LOS BOTONES
+        Button bregi = (Button) findViewById(R.id.bCrearCuent);
+        Button Binises = (Button) findViewById(R.id.bIniSes);
+        bregi.setTypeface(myFont(this));
+        Binises.setTypeface(myFont(this));
 
-        botonregistro.setOnClickListener(new View.OnClickListener() {
+        bregi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent goregistro = new Intent(FirstScreen.this, RegistroActivity.class);
@@ -28,6 +31,7 @@ public class FirstScreen extends AppCompatActivity {
         });
     }
 
+    // FUNCION PARA ASIGNAR LA FUENTE
     public static Typeface myFont(Context context) {
         return Typeface.createFromAsset(context.getAssets(), "fonts/Walkway SemiBold.ttf");
     }
