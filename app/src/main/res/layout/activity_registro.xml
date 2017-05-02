@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:background="@color/Azul"
     tools:context="com.example.alex.quickpark.RegistroActivity">
 
@@ -16,33 +18,35 @@
             tools:layout_editor_absoluteY="26dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="18dp"
-            android:layout_alignParentTop="true"
+            android:layout_marginTop="8dp"
+            android:layout_alignTop="@+id/tVRegi"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="17dp" />
+            android:layout_marginStart="15dp" />
 
         <TextView
             android:id="@+id/tVRegi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/bVolver"
-            android:layout_marginStart="14dp"
-            android:layout_toEndOf="@+id/bVolver"
+            android:layout_marginStart="16dp"
             android:text="Regístrate"
             android:textColor="@color/blanco"
-            android:textSize="25dp" />
+            android:textSize="40dp"
+            android:layout_marginTop="17dp"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/bVolver" />
 
         <TextView
             android:id="@+id/tVDatosUsu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:layout_below="@+id/bVolver"
             android:text="Datos de Usuario"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="27dp"
+            android:textSize="20dp"
             android:textAllCaps="false"
-            android:textColor="@color/blanco" />
+            android:textColor="@color/blanco"
+            android:layout_below="@+id/tVRegi" />
 
         <View
             android:id="@+id/view"
@@ -55,4 +59,91 @@
             android:background="@color/blanco"
             android:layout_below="@id/tVDatosUsu">
         </View>
+
+    <EditText
+        android:id="@+id/edTNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_alignEnd="@+id/view"
+        android:layout_alignStart="@+id/view"
+        android:layout_below="@+id/view"
+        android:layout_marginTop="16dp"
+        android:background="@color/blanco"
+        android:textColorHint="@color/Azul"
+        android:hint="Nombre"
+        android:inputType="textPersonName"
+        android:textColor="@color/Azul"
+        android:textSize="18dp" />
+
+    <EditText
+        android:id="@+id/edTApellidos"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginTop="17dp"
+        android:background="@color/blanco"
+        android:textColorHint="@color/Azul"
+        android:hint="Apellidos"
+        android:inputType="textPersonName"
+        android:textColor="@color/Azul"
+        android:textSize="18dp"
+        android:layout_below="@+id/edTNombre"
+        android:layout_alignStart="@+id/edTNombre"
+        android:layout_alignEnd="@+id/edTNombre" />
+
+    <EditText
+        android:id="@+id/edTCorreo"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginTop="17dp"
+        android:background="@color/blanco"
+        android:textColorHint="@color/Azul"
+        android:hint="Correo Electronico"
+        android:inputType="textPersonName"
+        android:textColor="@color/Azul"
+        android:textSize="18dp"
+        android:layout_below="@+id/edTApellidos"
+        android:layout_alignStart="@+id/edTApellidos"
+        android:layout_alignEnd="@+id/edTApellidos" />
+
+    <EditText
+        android:id="@+id/edTContraseña"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginTop="17dp"
+        android:background="@color/blanco"
+        android:textColorHint="@color/Azul"
+        android:hint="Contraseña"
+        android:inputType="textPersonName"
+        android:textColor="@color/Azul"
+        android:textSize="18dp"
+        android:layout_below="@+id/edTCorreo"
+        android:layout_alignStart="@+id/edTCorreo"
+        android:layout_alignEnd="@+id/edTCorreo" />
+
+    <EditText
+        android:id="@+id/edTContraseñaR"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginTop="17dp"
+        android:background="@color/blanco"
+        android:textColorHint="@color/Azul"
+        android:hint="Repite Contraseña"
+        android:inputType="textPersonName"
+        android:textColor="@color/Azul"
+        android:textSize="18dp"
+        android:layout_below="@+id/edTContraseña"
+        android:layout_alignStart="@+id/edTContraseña"
+        android:layout_alignEnd="@+id/edTContraseña" />
+
+    <Button
+        android:id="@+id/bCrear"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:background="@color/grisclaro"
+        android:textColor="@color/blanco"
+        android:text="Crear Cuenta"
+        android:layout_marginTop="60dp"
+        android:layout_below="@+id/edTContraseñaR"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

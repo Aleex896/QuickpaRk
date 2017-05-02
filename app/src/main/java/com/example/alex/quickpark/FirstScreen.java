@@ -18,17 +18,30 @@ public class FirstScreen extends AppCompatActivity {
 
         // ASIGNACION DE LAS FUENTES A LOS BOTONES
         Button bregi = (Button) findViewById(R.id.bCrearCuent);
-        Button Binises = (Button) findViewById(R.id.bIniSes);
+        Button binises = (Button) findViewById(R.id.bIniSes);
+
         bregi.setTypeface(myFont(this));
-        Binises.setTypeface(myFont(this));
+        binises.setTypeface(myFont(this));
 
         bregi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent goregistro = new Intent(FirstScreen.this, RegistroActivity.class);
                 startActivity(goregistro);
+                overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
             }
         });
+
+        binises.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goini = new Intent(FirstScreen.this, IniciarSesionActivity.class);
+                startActivity(goini);
+                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+            }
+        });
+
+
     }
 
     // FUNCION PARA ASIGNAR LA FUENTE
