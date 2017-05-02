@@ -4,9 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class FirstScreen extends AppCompatActivity {
 
@@ -40,20 +42,34 @@ public class FirstScreen extends AppCompatActivity {
                 overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
             }
         });
-
-
     }
 
-    // FUNCION PARA ASIGNAR LA FUENTE
+    // FUNCION PARA ASIGNAR LA FUENTE //////////////////////////////////////////////////////////////
     public static Typeface myFont(Context context) {
         return Typeface.createFromAsset(context.getAssets(), "fonts/Walkway SemiBold.ttf");
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
-
+    // FUNCION PARA DOBLE CLICK EN BACK = CERRAR APP ///////////////////////////////////////////////
+    boolean dobleclickatras = false;
     @Override
-    protected void onResume() {
-        super.onResume();
+    public void onBackPressed() {
+        if (dobleclickatras) {
+            super.onBackPressed();
+            finish();
+            return;
+        }
+
+        this.dobleclickatras = true;
+        Toast.makeText(this, "Pulsa de nuevo para salir", Toast.LENGTH_SHORT).show();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                dobleclickatras =false;
+            }
+        }, 2000);
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 }
 
 

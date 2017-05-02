@@ -1,9 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:background="@color/Azul"
     tools:context="com.example.alex.quickpark.IniciarSesionActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <Button
+        android:id="@+id/bVolver"
+        android:layout_width="80px"
+        android:layout_height="80px"
+        android:background="@drawable/flecha_derecha"
+        android:layout_marginTop="9dp"
+        android:layout_alignTop="@+id/tVIniciar"
+        android:layout_alignEnd="@+id/view" />
+
+    <TextView
+        android:id="@+id/tVIniciar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Iniciar Sesión"
+        android:textColor="@color/blanco"
+        android:textSize="40dp"
+        android:layout_marginTop="19dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignEnd="@+id/bIniciar" />
+
+    <TextView
+        android:id="@+id/tVIniciaSesiondatos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:text="Inicia sesión con tus datos"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="27dp"
+        android:textSize="20dp"
+        android:textAllCaps="false"
+        android:textColor="@color/blanco"
+        android:layout_below="@+id/tVIniciar" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_gravity="left"
+        android:layout_height="1dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/blanco"
+        android:layout_below="@id/tVIniciaSesiondatos">
+    </View>
+
+    <EditText
+        android:id="@+id/edTCorreoElectronico"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_alignEnd="@+id/view"
+        android:layout_alignStart="@+id/view"
+        android:layout_below="@+id/view"
+        android:layout_marginTop="16dp"
+        android:background="@color/blanco"
+        android:textColorHint="@color/Azul"
+        android:hint="Correo Electronico"
+        android:inputType="textPersonName"
+        android:textColor="@color/Azul"
+        android:textSize="18dp" />
+
+    <EditText
+        android:id="@+id/edTContraseña"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginTop="18dp"
+        android:background="@color/blanco"
+        android:textColorHint="@color/Azul"
+        android:hint="Contraseña"
+        android:inputType="textPersonName"
+        android:textColor="@color/Azul"
+        android:textSize="18dp"
+        android:layout_below="@+id/edTCorreoElectronico"
+        android:layout_alignStart="@+id/edTCorreoElectronico"
+        android:layout_alignEnd="@+id/edTCorreoElectronico" />
+
+    <Button
+        android:id="@+id/bIniciar"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:background="@color/grisclaro"
+        android:textColor="@color/blanco"
+        android:text="Iniciar sesión"
+        android:layout_marginTop="48dp"
+        android:layout_below="@+id/edTContraseña"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>
