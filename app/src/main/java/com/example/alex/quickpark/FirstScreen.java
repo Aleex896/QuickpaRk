@@ -4,11 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 public class FirstScreen extends AppCompatActivity {
 
@@ -51,23 +49,9 @@ public class FirstScreen extends AppCompatActivity {
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     // FUNCION PARA DOBLE CLICK EN BACK = CERRAR APP ///////////////////////////////////////////////
-    boolean dobleclickatras = false;
     @Override
     public void onBackPressed() {
-        if (dobleclickatras) {
-            super.onBackPressed();
-            finish();
-            return;
-        }
-
-        this.dobleclickatras = true;
-        Toast.makeText(this, "Pulsa de nuevo para salir", Toast.LENGTH_SHORT).show();
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                dobleclickatras =false;
-            }
-        }, 2000);
+        finishAffinity();
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////
 }

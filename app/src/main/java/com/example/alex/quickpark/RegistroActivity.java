@@ -6,7 +6,6 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -50,8 +49,8 @@ public class RegistroActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent goregistro = new Intent(RegistroActivity.this, FirstScreen.class);
                 startActivity(goregistro);
-                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
                 finish();
+                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
             }
         });
 
@@ -59,17 +58,17 @@ public class RegistroActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
+    public void onBackPressed() {
+
             Intent goregistro = new Intent(RegistroActivity.this, FirstScreen.class);
             startActivity(goregistro);
-            overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
             finish();
-            return true;
+            overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
         }
 
-        return super.onKeyDown(keyCode, event);
-    }
+
+
+
 
     // FUNCION PARA ASIGNAR LA FUENTE
     public static Typeface myFont(Context context) {
