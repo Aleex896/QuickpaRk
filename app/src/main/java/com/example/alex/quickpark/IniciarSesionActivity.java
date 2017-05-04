@@ -10,8 +10,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class IniciarSesionActivity extends AppCompatActivity {
+
+    public static String userMail;
+    public static String password;
+    private Context context;
+    public static boolean passok;
+    public static EditText correo;
+    public static EditText eTContra;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +29,8 @@ public class IniciarSesionActivity extends AppCompatActivity {
         Button bVolver = (Button) findViewById(R.id.bVolver);
         TextView tvIni = (TextView) findViewById(R.id.tVIniciar);
         TextView tvInici = (TextView) findViewById(R.id.tVIniciaSesiondatos);
-        EditText correo = (EditText) findViewById(R.id.edTCorreoElectronico);
-        EditText eTContra = (EditText) findViewById(R.id.edTContraseña);
+        correo = (EditText) findViewById(R.id.edTCorreoElectronico);
+        eTContra = (EditText) findViewById(R.id.edTContraseña);
         Button biniciar = (Button) findViewById(R.id.bIniciar);
 
         eTContra.setInputType(InputType.TYPE_CLASS_TEXT |
@@ -33,6 +41,25 @@ public class IniciarSesionActivity extends AppCompatActivity {
         correo.setTypeface(myFont(this));
         eTContra.setTypeface(myFont(this));
         biniciar.setTypeface(myFont(this));
+
+        biniciar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                userMail = correo.getText().toString();
+                password = eTContra.getText().toString();
+
+                if(!userMail.equals("") && !password.equals("")){
+                    context = getApplicationContext();
+                    new InicioSessionHttp(context, IniciarSesionActivity.this).execute();
+
+                }
+                else
+                {
+                    Toast toast1 = Toast.makeText(getApplicationContext(), "Contraseñas Incorrectas", Toast.LENGTH_LONG);
+                    toast1.show();
+                }
+            }
+        });
 
 
         bVolver.setOnClickListener(new View.OnClickListener() {

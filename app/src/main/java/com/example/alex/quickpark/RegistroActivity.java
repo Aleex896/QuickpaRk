@@ -10,8 +10,27 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class RegistroActivity extends AppCompatActivity {
+
+    public static String nombre;
+    public static String apellido;
+    public static String email;
+    public static String pass;
+    public static EditText eTNombre;
+    public static EditText eTApellidos;
+    public static EditText eTCorreo;
+    public static EditText eTContra;
+    public static EditText eTContraR;
+    public static Intent gomap;
+
+
+
+    private String passR;
+    private Context context;
+
+    public static boolean regok;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,11 +40,11 @@ public class RegistroActivity extends AppCompatActivity {
         Button bVolver = (Button) findViewById(R.id.bVolver);
         TextView tVRegi = (TextView) findViewById(R.id.tVIniciar);
         TextView tVDatosUs = (TextView) findViewById(R.id.tVIniciaSesiondatos);
-        EditText eTNombre = (EditText) findViewById(R.id.edTCorreoElectronico);
-        EditText eTApellidos = (EditText) findViewById(R.id.edTApellidos);
-        EditText eTCorreo = (EditText) findViewById(R.id.edTCorreo);
-        EditText eTContra = (EditText) findViewById(R.id.edTContraseña);
-        EditText eTContraR = (EditText) findViewById(R.id.edTContraseñaR);
+        eTNombre = (EditText) findViewById(R.id.edTCorreoElectronico);
+        eTApellidos = (EditText) findViewById(R.id.edTApellidos);
+        eTCorreo = (EditText) findViewById(R.id.edTCorreo);
+        eTContra = (EditText) findViewById(R.id.edTContraseña);
+        eTContraR = (EditText) findViewById(R.id.edTContraseñaR);
         Button  bCrear = (Button) findViewById(R.id.bIniciar);
 
         eTContra.setInputType(InputType.TYPE_CLASS_TEXT |
@@ -54,7 +73,37 @@ public class RegistroActivity extends AppCompatActivity {
             }
         });
 
+        bCrear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                pass = eTContra.getText().toString();
+                passR = eTContraR.getText().toString();
+                nombre = eTNombre.getText().toString();
+                apellido = eTApellidos.getText().toString();
+                email = eTCorreo.getText().toString();
+
+                if (!pass.equals("") && !passR.equals("") && !nombre.equals("") && !apellido.equals("") && !email.equals("")) {
+                    if (passR.equals(pass)) {
+                        context = getApplicationContext();
+                        try {
+                            new RegistroHttp(context, RegistroActivity.this).execute();
+                            // TODO: PANTALLA DE CARGA ANTES DE ENTRAR AL MAPA
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        Toast toast1 = Toast.makeText(getApplicationContext(), "Contraseñas Incorrectas", Toast.LENGTH_LONG);
+                        toast1.show();
+                        eTContra.setText(null);
+                        eTContraR.setText(null);
+                    }
+                } else {
+                    Toast toast2 = Toast.makeText(getApplicationContext(), "Todos los campos deben rellenarse", Toast.LENGTH_LONG);
+                    toast2.show();
+                }
+            }
+        });
     }
 
     @Override
@@ -64,11 +113,7 @@ public class RegistroActivity extends AppCompatActivity {
             startActivity(goregistro);
             finish();
             overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
-        }
-
-
-
-
+    }
 
     // FUNCION PARA ASIGNAR LA FUENTE
     public static Typeface myFont(Context context) {

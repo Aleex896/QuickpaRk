@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 public class FirstScreen extends AppCompatActivity {
 
@@ -15,10 +16,23 @@ public class FirstScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_login);
 
+        // !!!!!!!!!!!!!!!!! ES TEST !!!!!!!!!!!!!!!!!
+                    ImageView test1 = (ImageView) findViewById(R.id.imageView2);
+                    test1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent gomapstest = new Intent(FirstScreen.this, MapsActivity.class);
+                            startActivity(gomapstest);
+                        }
+                    });
+        // !!!!!!!!!!!!!!!!! ES TEST !!!!!!!!!!!!!!!!!
+
+
 
         // ASIGNACION DE LAS FUENTES A LOS BOTONES
         Button bregi = (Button) findViewById(R.id.bCrearCuent);
         Button binises = (Button) findViewById(R.id.bIniSes);
+
 
         bregi.setTypeface(myFont(this));
         binises.setTypeface(myFont(this));
