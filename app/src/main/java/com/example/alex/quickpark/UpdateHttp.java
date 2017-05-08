@@ -99,8 +99,8 @@ public class UpdateHttp extends AsyncTask<Void,Void,String> {
                     AjustesUsActivity.eTContraR.setText(null);
                     AjustesUsActivity.eTCorreo.setText(null);
 
-                    Intent gomap = new Intent(myActivity, AjustesActivity.class);
-                    myActivity.startActivity(gomap);
+                    Intent goaju = new Intent(myActivity, AjustesActivity.class);
+                    myActivity.startActivity(goaju);
                     break;
             }
         } catch (Exception e) {
