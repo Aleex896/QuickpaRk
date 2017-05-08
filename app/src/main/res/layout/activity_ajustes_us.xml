@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left"
-        android:text="Nuevos datos de usuario"
+        android:text="Usuario: "
         android:layout_marginLeft="30dp"
         android:layout_marginTop="27dp"
         android:textSize="20dp"

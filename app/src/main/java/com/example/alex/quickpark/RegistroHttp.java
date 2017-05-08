@@ -40,7 +40,7 @@ public class RegistroHttp extends AsyncTask<Void,Void,String>{
             String pass = RegistroActivity.pass;
             //byte[] pass = RegistroActivity.passBy;
 
-            url = new URL("http://quickpark.000webhostapp.com/php/resgistroUsuario.php?mail="+mail+"&name="+name+"&ape="+apellido+"&pasw="+pass);
+            url = new URL("http://quickpark.000webhostapp.com/php/registroUsuario.php?mail="+mail+"&name="+name+"&ape="+apellido+"&pasw="+pass);
             HttpURLConnection urlConnection=(HttpURLConnection)url.openConnection();
 
             Log.d("registro",url.toString());

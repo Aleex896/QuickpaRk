@@ -81,6 +81,7 @@ public class AjustesActivity extends AppCompatActivity implements Serializable {
     public void onBackPressed() {
 
         Intent goregistro = new Intent(AjustesActivity.this, MapsActivity.class);
+        goregistro.putExtra("user",user);
         startActivity(goregistro);
         finish();
         overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);

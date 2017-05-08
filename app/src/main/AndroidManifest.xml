@@ -50,7 +50,6 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"
             android:screenOrientation="portrait" />
         <activity
             android:name=".QrActivity"
@@ -61,7 +60,14 @@
         <activity
             android:name=".ScanActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".AjustesUsActivity"
+        <activity
+            android:name=".AjustesUsActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ListaVehiculosActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".AddCarActivity"
             android:screenOrientation="portrait"/>
     </application>
 

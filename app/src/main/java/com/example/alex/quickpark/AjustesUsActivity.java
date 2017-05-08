@@ -34,6 +34,8 @@ public class AjustesUsActivity extends AppCompatActivity implements Serializable
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajustes_us);
 
+
+
         Button bVolver = (Button) findViewById(R.id.bVolver);
         TextView tVRegi = (TextView) findViewById(R.id.tVIniciar);
         TextView tVDatosUs = (TextView) findViewById(R.id.tVIniciaSesiondatos);
@@ -61,6 +63,8 @@ public class AjustesUsActivity extends AppCompatActivity implements Serializable
 
         user = getIntent().getStringExtra("user");
 
+        tVDatosUs.setText("Usuario: "+user);
+
         bVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,7 +83,7 @@ public class AjustesUsActivity extends AppCompatActivity implements Serializable
                 passR = eTContraR.getText().toString();
                 nombre = eTNombre.getText().toString();
                 apellido = eTApellidos.getText().toString();
-                email = eTCorreo.getText().toString();
+                email = user;
 
                 if (!pass.equals("") && !passR.equals("") && !nombre.equals("") && !apellido.equals("") && !email.equals("")) {
                     if (passR.equals(pass)) {
@@ -102,15 +106,13 @@ public class AjustesUsActivity extends AppCompatActivity implements Serializable
                 }
             }
         });
-
-
-
     }
 
     @Override
     public void onBackPressed() {
 
         Intent goregistro = new Intent(AjustesUsActivity.this, AjustesActivity.class);
+        goregistro.putExtra("user",user);
         startActivity(goregistro);
         finish();
         overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);

@@ -2,11 +2,9 @@ package com.example.alex.quickpark;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.Typeface;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.test.suitebuilder.TestMethod;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -63,7 +61,7 @@ public class AddCarActivity extends AppCompatActivity implements AdapterView.OnI
                 goajustes.putExtra("user",user);
                 startActivity(goajustes);
                 finish();
-                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+                overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
             }
         });
     }
@@ -118,5 +116,14 @@ public class AddCarActivity extends AppCompatActivity implements AdapterView.OnI
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
         ivColor.setVisibility(View.INVISIBLE);
+    }
+    @Override
+    public void onBackPressed() {
+
+        Intent goregistro = new Intent(AddCarActivity.this, ListaVehiculosActivity.class);
+        goregistro.putExtra("user",user);
+        startActivity(goregistro);
+        finish();
+        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
     }
 }

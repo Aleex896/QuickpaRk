@@ -61,8 +61,9 @@ public class ListaVehiculosActivity extends AppCompatActivity implements Seriali
     @Override
     public void onBackPressed() {
         Intent goregistro = new Intent(ListaVehiculosActivity.this, AjustesActivity.class);
+        goregistro.putExtra("user",user);
         startActivity(goregistro);
         finish();
-        overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
     }
 }

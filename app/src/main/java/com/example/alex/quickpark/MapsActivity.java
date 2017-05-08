@@ -60,6 +60,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         ImageButton bAju = (ImageButton) findViewById(R.id.bPref);
 
         user = getIntent().getStringExtra("user");
+        //Log.d("parametro:", user);
 
         bMaps.setOnClickListener(new View.OnClickListener() {
             @Override
