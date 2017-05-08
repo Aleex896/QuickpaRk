@@ -1,4 +1,13 @@
 <resources>
+    <string-array name="lista_colores">
+        <item>-- Escoge un color --</item>
+        <item>Rojo</item>
+        <item>Blanco</item>
+        <item>Azul</item>
+        <item>Verde</item>
+        <item>Plateado</item>
+        <item>Negro</item>
+    </string-array>
     <string name="app_name">Quickpark</string>
     <string name="title_activity_maps">Map</string>
 </resources>
