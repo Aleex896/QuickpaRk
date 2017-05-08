@@ -24,7 +24,7 @@
             android:layout_height="120dp"
             android:layout_marginRight="10dp"
             android:background="@color/blanco"
-            android:src="@drawable/icono_usuarioaju" />
+            android:src="@drawable/icono_ajustesusu" />
 
         <ImageButton
             android:id="@+id/bAjustesMon"
