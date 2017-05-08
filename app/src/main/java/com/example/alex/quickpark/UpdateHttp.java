@@ -100,6 +100,7 @@ public class UpdateHttp extends AsyncTask<Void,Void,String> {
                     AjustesUsActivity.eTCorreo.setText(null);
 
                     Intent goaju = new Intent(myActivity, AjustesActivity.class);
+                    goaju.putExtra("user",AjustesUsActivity.email);
                     myActivity.startActivity(goaju);
                     break;
             }

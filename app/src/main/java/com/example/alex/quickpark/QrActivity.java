@@ -12,12 +12,14 @@ import android.widget.Toast;
 
 import com.google.android.gms.vision.barcode.Barcode;
 
+import java.io.Serializable;
+
 import static com.google.zxing.integration.android.IntentIntegrator.REQUEST_CODE;
 
-public class QrActivity extends AppCompatActivity {
+public class QrActivity extends AppCompatActivity implements Serializable {
 
     TextView result;
-    String textoqr;
+    String textoqr,user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,8 @@ public class QrActivity extends AppCompatActivity {
         ImageButton bAju = (ImageButton) findViewById(R.id.bPref);
         ImageButton bIniQr = (ImageButton) findViewById(R.id.biniQr);
         result = (TextView) findViewById(R.id.result);
+
+        user = getIntent().getStringExtra("user");
 
 
         ActivityCompat.requestPermissions(this,
@@ -47,6 +51,7 @@ public class QrActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent goQr = new Intent(QrActivity.this, MapsActivity.class);
+                goQr.putExtra("user",user);
                 startActivity(goQr);
                 finish();
                 overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
@@ -64,6 +69,7 @@ public class QrActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent goaju = new Intent(QrActivity.this, AjustesActivity.class);
+                goaju.putExtra("user",user);
                 startActivity(goaju);
                 finish();
                 overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);

@@ -9,7 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class ConfirmacionActivity extends AppCompatActivity {
+import java.io.Serializable;
+
+public class ConfirmacionActivity extends AppCompatActivity implements Serializable {
+
+    String user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +26,13 @@ public class ConfirmacionActivity extends AppCompatActivity {
         tvRealizado.setTypeface(myFont(this));
         btMenu.setTypeface(myFont(this));
 
+        user = getIntent().getStringExtra("user");
+
         btMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent gomenu = new Intent(ConfirmacionActivity.this,AjustesActivity.class);
+                gomenu.putExtra("user",user);
                 startActivity(gomenu);
                 finish();
                 overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);

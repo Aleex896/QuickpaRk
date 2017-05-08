@@ -12,7 +12,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class RegistroActivity extends AppCompatActivity {
+import java.io.Serializable;
+
+public class RegistroActivity extends AppCompatActivity implements Serializable {
 
     public static String nombre;
     public static String apellido;

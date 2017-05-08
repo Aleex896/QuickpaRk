@@ -12,7 +12,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class AjustesUsActivity extends AppCompatActivity {
+import java.io.Serializable;
+
+public class AjustesUsActivity extends AppCompatActivity implements Serializable {
 
     public static String nombre;
     public static String apellido;
@@ -24,7 +26,7 @@ public class AjustesUsActivity extends AppCompatActivity {
     public static EditText eTContra;
     public static EditText eTContraR;
 
-    private String passR;
+    private String passR,user;
     private Context context;
 
     @Override
@@ -56,6 +58,8 @@ public class AjustesUsActivity extends AppCompatActivity {
         eTContra.setTypeface(myFont(this));
         eTContraR.setTypeface(myFont(this));
         bCrear.setTypeface(myFont(this));
+
+        user = getIntent().getStringExtra("user");
 
         bVolver.setOnClickListener(new View.OnClickListener() {
             @Override

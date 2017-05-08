@@ -12,7 +12,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class IniciarSesionActivity extends AppCompatActivity {
+import java.io.Serializable;
+
+public class IniciarSesionActivity extends AppCompatActivity implements Serializable{
 
     public static String userMail;
     public static String password;

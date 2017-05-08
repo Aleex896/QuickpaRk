@@ -1,6 +1,7 @@
 package com.example.alex.quickpark;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
@@ -15,12 +16,14 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public class AddCarActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+import java.io.Serializable;
+
+public class AddCarActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener,Serializable {
 
     ImageView ivColor;
     Spinner spColor;
     String colorSelec="";
-    String matricula;
+    String matricula,user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,7 @@ public class AddCarActivity extends AppCompatActivity implements AdapterView.OnI
         TextView tvMatricula = (TextView)findViewById(R.id.tVVehiculo);
         TextView tvColor = (TextView)findViewById(R.id.tVColor);
         EditText etMatricula = (EditText)findViewById(R.id.etMatricula);
+        Button btVolver = (Button)findViewById(R.id.bVolver);
         Button btAnadir = (Button)findViewById(R.id.btAdd);
         spColor = (Spinner)findViewById(R.id.spColor);
         ivColor = (ImageView)findViewById(R.id.iVCarColor);
@@ -49,6 +53,19 @@ public class AddCarActivity extends AppCompatActivity implements AdapterView.OnI
 
         spColor.setAdapter(adapter);
         spColor.setOnItemSelectedListener(this);
+
+        user=getIntent().getStringExtra("user");
+
+        btVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goajustes = new Intent(AddCarActivity.this, ListaVehiculosActivity.class);
+                goajustes.putExtra("user",user);
+                startActivity(goajustes);
+                finish();
+                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+            }
+        });
     }
 
     public static Typeface myFont(Context context) {

@@ -102,6 +102,7 @@ public class RegistroHttp extends AsyncTask<Void,Void,String>{
                     RegistroActivity.eTCorreo.setText(null);
 
                     Intent gomap = new Intent(myActivity, MapsActivity.class);
+                    gomap.putExtra("user",RegistroActivity.email);
                     myActivity.startActivity(gomap);
                     break;
             }

@@ -10,7 +10,11 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-public class ListaVehiculosActivity extends AppCompatActivity {
+import java.io.Serializable;
+
+public class ListaVehiculosActivity extends AppCompatActivity implements Serializable {
+
+    String user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +29,13 @@ public class ListaVehiculosActivity extends AppCompatActivity {
         tvListado.setTypeface(myFont(this));
         tvLCar.setTypeface(myFont(this));
 
+        user = getIntent().getStringExtra("user");
+
         btVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent goajustes = new Intent(ListaVehiculosActivity.this, AjustesActivity.class);
+                goajustes.putExtra("user",user);
                 startActivity(goajustes);
                 finish();
                 overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
@@ -39,6 +46,7 @@ public class ListaVehiculosActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent goadd = new Intent(ListaVehiculosActivity.this, AddCarActivity.class);
+                goadd.putExtra("user",user);
                 startActivity(goadd);
                 finish();
                 overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
@@ -52,7 +60,6 @@ public class ListaVehiculosActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-
         Intent goregistro = new Intent(ListaVehiculosActivity.this, AjustesActivity.class);
         startActivity(goregistro);
         finish();

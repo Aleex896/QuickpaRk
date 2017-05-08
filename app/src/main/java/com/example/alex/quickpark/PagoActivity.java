@@ -91,6 +91,7 @@ public class PagoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent goajustes = new Intent(PagoActivity.this, AjustesActivity.class);
+                goajustes.putExtra("user",user);
                 startActivity(goajustes);
                 finish();
                 overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);

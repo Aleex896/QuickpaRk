@@ -26,16 +26,19 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 
+import java.io.Serializable;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
-        com.google.android.gms.location.LocationListener {
+        com.google.android.gms.location.LocationListener,Serializable {
 
     private GoogleMap mMap;
     GoogleApiClient mGoogleApiClient;
     Location mLastLocation;
     Marker mCurrLocationMarker;
     LocationRequest mLocationRequest;
+    String user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +59,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         ImageButton bQr = (ImageButton) findViewById(R.id.bQr);
         ImageButton bAju = (ImageButton) findViewById(R.id.bPref);
 
+        user = getIntent().getStringExtra("user");
+
         bMaps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,6 +72,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onClick(View v) {
                 Intent goQr = new Intent(MapsActivity.this, QrActivity.class);
+                goQr.putExtra("user",user);
                 startActivity(goQr);
                 finish();
                 overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
@@ -77,6 +83,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onClick(View v) {
                 Intent goaju = new Intent(MapsActivity.this, AjustesActivity.class);
+                goaju.putExtra("user",user);
                 startActivity(goaju);
                 finish();
                 overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);

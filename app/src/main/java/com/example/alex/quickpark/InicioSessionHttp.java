@@ -96,6 +96,7 @@ public class InicioSessionHttp extends AsyncTask<Void,Void,JSONArray> {
                 IniciarSesionActivity.correo.setText(null);
 
                 Intent gomap = new Intent(myActivity, MapsActivity.class);
+                gomap.putExtra("user",IniciarSesionActivity.userMail);
                 myActivity.startActivity(gomap);
 
             }else{
