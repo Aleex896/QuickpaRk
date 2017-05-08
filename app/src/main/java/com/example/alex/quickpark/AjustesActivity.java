@@ -16,6 +16,17 @@ public class AjustesActivity extends AppCompatActivity {
         ImageButton bMaps = (ImageButton) findViewById(R.id.bMaps);
         ImageButton bQr = (ImageButton) findViewById(R.id.bQr);
         ImageButton bAju = (ImageButton) findViewById(R.id.bPref);
+        ImageButton bAjuUs = (ImageButton) findViewById(R.id.bAjustesUsu);
+
+        bAjuUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goajuusu = new Intent(AjustesActivity.this, AjustesUsActivity.class);
+                startActivity(goajuusu);
+                finish();
+                overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
+            }
+        });
 
         bMaps.setOnClickListener(new View.OnClickListener() {
             @Override

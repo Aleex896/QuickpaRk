@@ -1,5 +1,4 @@
 package com.example.alex.quickpark;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -18,12 +17,12 @@ import java.net.URL;
  * Created by JoseAntonio on 03/05/2017.
  */
 
-public class RegistroHttp extends AsyncTask<Void,Void,String>{
+public class UpdateHttp extends AsyncTask<Void,Void,String> {
 
     private Context mycontext;
     private Activity myActivity;
 
-    public RegistroHttp(Context context, Activity activity){
+    public UpdateHttp(Context context, Activity activity){
         mycontext = context;
         myActivity = activity;
     }
@@ -34,13 +33,12 @@ public class RegistroHttp extends AsyncTask<Void,Void,String>{
         String estat="1";
 
         try{
-            String mail = RegistroActivity.email;
-            String name = RegistroActivity.nombre;
-            String apellido = RegistroActivity.apellido;
-            String pass = RegistroActivity.pass;
-            //byte[] pass = RegistroActivity.passBy;
+            String mail = AjustesUsActivity.email;
+            String name = AjustesUsActivity.nombre;
+            String apellido = AjustesUsActivity.apellido;
+            String pass = AjustesUsActivity.pass;
 
-            url = new URL("http://quickpark.000webhostapp.com/php/resgistroUsuario.php?mail="+mail+"&name="+name+"&ape="+apellido+"&pasw="+pass);
+            url = new URL("http://quickpark.000webhostapp.com/php/updateUsuario.php?mail="+mail+"&name="+name+"&ape="+apellido+"&pasw="+pass);
             HttpURLConnection urlConnection=(HttpURLConnection)url.openConnection();
 
             Log.d("registro",url.toString());
@@ -82,26 +80,26 @@ public class RegistroHttp extends AsyncTask<Void,Void,String>{
                 case "1": Log.d("registroEstado","Error Servidor");
                     Toast toast1 = Toast.makeText(mycontext.getApplicationContext(),"Error Servidor",Toast.LENGTH_LONG);
                     toast1.show();
-                    RegistroActivity.eTContra.setText(null);
-                    RegistroActivity.eTContraR.setText(null);
+                    AjustesUsActivity.eTContra.setText(null);
+                    AjustesUsActivity.eTContraR.setText(null);
                     break;
-                case "2": Log.d("registroEstado","Ya existe el usuario!");
-                    Toast toast2 = Toast.makeText(mycontext.getApplicationContext(),"Ya existe el usuario",Toast.LENGTH_LONG);
+                case "2": Log.d("registroEstado","No Existe usuario!");
+                    Toast toast2 = Toast.makeText(mycontext.getApplicationContext(),"No existe el usuario",Toast.LENGTH_LONG);
                     toast2.show();
-                    RegistroActivity.eTContra.setText(null);
-                    RegistroActivity.eTContraR.setText(null);
+                    AjustesUsActivity.eTContra.setText(null);
+                    AjustesUsActivity.eTContraR.setText(null);
                     break;
-                case "3": Log.d("registroEstado","Insertado Correctamente");
-                    Toast toast3 = Toast.makeText(mycontext.getApplicationContext(),"Registrado Correctamente",Toast.LENGTH_LONG);
+                case "3": Log.d("Actu Estado","Actualizado Correctamente");
+                    Toast toast3 = Toast.makeText(mycontext.getApplicationContext(),"Datos Actualizados Correctamente",Toast.LENGTH_LONG);
                     toast3.show();
 
-                    RegistroActivity.eTNombre.setText(null);
-                    RegistroActivity.eTApellidos.setText(null);
-                    RegistroActivity.eTContra.setText(null);
-                    RegistroActivity.eTContraR.setText(null);
-                    RegistroActivity.eTCorreo.setText(null);
+                    AjustesUsActivity.eTNombre.setText(null);
+                    AjustesUsActivity.eTApellidos.setText(null);
+                    AjustesUsActivity.eTContra.setText(null);
+                    AjustesUsActivity.eTContraR.setText(null);
+                    AjustesUsActivity.eTCorreo.setText(null);
 
-                    Intent gomap = new Intent(myActivity, MapsActivity.class);
+                    Intent gomap = new Intent(myActivity, AjustesActivity.class);
                     myActivity.startActivity(gomap);
                     break;
             }

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:background="@color/Azul"
+    tools:context="com.example.alex.quickpark.RegistroActivity">
+
+    <Button
+        android:id="@+id/bVolver"
+        android:layout_width="80px"
+        android:layout_height="80px"
+        android:background="@drawable/flecha_izquierda"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="26dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_above="@+id/tVIniciaSesiondatos"
+        android:layout_toStartOf="@+id/tVIniciar" />
+
+    <TextView
+        android:id="@+id/tVIniciar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Modifica tus datos"
+        android:textColor="@color/blanco"
+        android:textSize="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/tVIniciaSesiondatos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:text="Nuevos datos de usuario"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="27dp"
+        android:textSize="20dp"
+        android:textAllCaps="false"
+        android:textColor="@color/blanco"
+        android:layout_below="@+id/tVIniciar" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_gravity="left"
+        android:layout_height="1dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/blanco"
+        android:layout_below="@id/tVIniciaSesiondatos">
+    </View>
+
+    <EditText
+        android:id="@+id/edTCorreoElectronico"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_alignEnd="@+id/view"
+        android:layout_alignStart="@+id/view"
+        android:layout_below="@+id/view"
+        android:layout_marginTop="16dp"
+        android:background="@color/blanco"
+        android:textColorHint="@color/Azul"
+        android:hint="Nombre"
+        android:inputType="textPersonName"
+        android:textColor="@color/Azul"
+        android:textSize="18dp" />
+
+    <EditText
+        android:id="@+id/edTApellidos"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginTop="17dp"
+        android:background="@color/blanco"
+        android:textColorHint="@color/Azul"
+        android:hint="Apellidos"
+        android:inputType="textPersonName"
+        android:textColor="@color/Azul"
+        android:textSize="18dp"
+        android:layout_below="@+id/edTCorreoElectronico"
+        android:layout_alignStart="@+id/edTCorreoElectronico"
+        android:layout_alignEnd="@+id/edTCorreoElectronico" />
+
+    <EditText
+        android:id="@+id/edTCorreo"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginTop="17dp"
+        android:background="@color/blanco"
+        android:textColorHint="@color/Azul"
+        android:hint="Correo Electronico"
+        android:inputType="textPersonName"
+        android:textColor="@color/Azul"
+        android:textSize="18dp"
+        android:layout_below="@+id/edTApellidos"
+        android:layout_alignStart="@+id/edTApellidos"
+        android:layout_alignEnd="@+id/edTApellidos" />
+
+    <EditText
+        android:id="@+id/edTContraseña"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginTop="17dp"
+        android:background="@color/blanco"
+        android:textColorHint="@color/Azul"
+        android:hint="Contraseña"
+        android:inputType="textPersonName"
+        android:textColor="@color/Azul"
+        android:textSize="18dp"
+        android:layout_below="@+id/edTCorreo"
+        android:layout_alignStart="@+id/edTCorreo"
+        android:layout_alignEnd="@+id/edTCorreo" />
+
+    <EditText
+        android:id="@+id/edTContraseñaR"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginTop="17dp"
+        android:background="@color/blanco"
+        android:textColorHint="@color/Azul"
+        android:hint="Repite Contraseña"
+        android:inputType="textPersonName"
+        android:textColor="@color/Azul"
+        android:textSize="18dp"
+        android:layout_below="@+id/edTContraseña"
+        android:layout_alignStart="@+id/edTContraseña"
+        android:layout_alignEnd="@+id/edTContraseña" />
+
+    <Button
+        android:id="@+id/bGuardarDatos"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:background="@color/grisclaro"
+        android:textColor="@color/blanco"
+        android:text="Guardar Datos"
+        android:layout_marginTop="60dp"
+        android:layout_below="@+id/edTContraseñaR"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
