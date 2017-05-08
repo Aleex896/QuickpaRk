@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llHolder"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:background="@color/Azul">
+
+    <Button
+        android:id="@+id/bVolver"
+        android:layout_width="80px"
+        android:layout_height="80px"
+        android:background="@drawable/flecha_izquierda"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_alignTop="@+id/tVIniciar"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="15dp" />
+
+    <TextView
+        android:id="@+id/tVIniciar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Confirmar Pago"
+        android:textColor="@color/blanco"
+        android:textSize="40dp"
+        android:layout_marginTop="17dp"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/bVolver" />
+
+    <TextView
+        android:id="@+id/tVDatosPago"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:text="Datos del pago"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="27dp"
+        android:textSize="20dp"
+        android:textAllCaps="false"
+        android:textColor="@color/blanco"
+        android:layout_below="@+id/tVIniciar" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_gravity="left"
+        android:layout_height="1dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/blanco"
+        android:layout_below="@id/tVDatosPago">
+    </View>
+
+    <RelativeLayout
+        android:id="@+id/rlTarifa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/view">
+        <TextView
+            android:id="@+id/tVTarifa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2.2dp"
+            android:text="Tarifa"
+            android:textSize="20dp"
+            android:textAllCaps="false"
+            android:layout_centerVertical="true"
+            android:textColor="@color/blanco"
+            android:layout_below="@+id/view" />
+
+        <EditText
+            android:id="@+id/edTTarifa"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:background="@color/blanco"
+            android:textColorHint="@color/Azul"
+            android:hint="Tarifa"
+            android:enabled="false"
+            android:inputType="textPersonName"
+            android:textColor="@color/Azul"
+            android:textSize="18dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlPrecio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/rlTarifa"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tVPrecio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Precio"
+            android:textSize="20dp"
+            android:textAllCaps="false"
+            android:layout_centerVertical="true"
+            android:textColor="@color/blanco" />
+
+        <EditText
+            android:id="@+id/etPrice"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:background="@color/blanco"
+            android:textColorHint="@color/Azul"
+            android:hint="Precio"
+            android:inputType="textPersonName"
+            android:textColor="@color/Azul"
+            android:textSize="18dp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tVDatosVehiculo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:text="Datos del vehiculo"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:textSize="20dp"
+        android:textAllCaps="false"
+        android:textColor="@color/blanco"
+        android:layout_below="@+id/rlPrecio" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_gravity="left"
+        android:layout_height="1dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/blanco"
+        android:layout_below="@id/tVDatosVehiculo">
+    </View>
+
+    <RelativeLayout
+        android:id="@+id/rlVehiculo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/view2"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tVVehiculo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Matricula"
+            android:textSize="20dp"
+            android:layout_centerVertical="true"
+            android:textAllCaps="false"
+            android:textColor="@color/blanco" />
+
+        <EditText
+            android:id="@+id/etVehiculo"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:background="@color/blanco"
+            android:textColorHint="@color/Azul"
+            android:hint="Matricula"
+            android:enabled="false"
+            android:textColor="@color/Azul"
+            android:textSize="18dp" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btnPay"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:background="@color/grisclaro"
+        android:textColor="@color/blanco"
+        android:text="Realizar Pago"
+        android:layout_marginTop="48dp"
+        android:layout_below="@+id/rlVehiculo"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:background="@color/Azul"
+    tools:context="com.example.alex.quickpark.ConfirmacionActivity">
+
+    <ImageView
+        android:id="@+id/iVConfirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/confirm"/>
+    <TextView
+        android:id="@+id/tVRcorrecto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iVConfirm"
+        android:textSize="40dp"
+        android:textAlignment="center"
+        android:text="Pago Realizado Correctamente"/>
+    <Button
+        android:id="@+id/btVMenu"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:background="@color/grisclaro"
+        android:textColor="@color/blanco"
+        android:text="Volver al Menu"
+        android:layout_marginTop="48dp"
+        android:layout_below="@+id/tVRcorrecto"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

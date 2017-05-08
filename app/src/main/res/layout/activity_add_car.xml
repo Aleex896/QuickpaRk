@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llHolder"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:background="@color/Azul">
+
+    <Button
+        android:id="@+id/bVolver"
+        android:layout_width="80px"
+        android:layout_height="80px"
+        android:background="@drawable/flecha_izquierda"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_alignTop="@+id/tVTusVehiculos"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="15dp" />
+
+    <TextView
+        android:id="@+id/tVTusVehiculos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Añadir Vehiculo"
+        android:textColor="@color/blanco"
+        android:textSize="40dp"
+        android:layout_marginTop="17dp"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/bVolver" />
+
+        <TextView
+            android:id="@+id/tVListado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="27dp"
+            android:layout_gravity="left"
+            android:text="Datos Vehiculo"
+            android:textSize="20dp"
+            android:textAllCaps="false"
+            android:textColor="@color/blanco"
+            android:layout_below="@+id/tVTusVehiculos"/>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_gravity="left"
+        android:layout_height="1dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/blanco"
+        android:layout_below="@id/tVListado">
+    </View>
+
+    <RelativeLayout
+        android:id="@+id/rlMatricula"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/view">
+        <TextView
+            android:id="@+id/tVVehiculo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Matricula"
+            android:textSize="20dp"
+            android:layout_centerVertical="true"
+            android:textAllCaps="false"
+            android:textColor="@color/blanco" />
+
+        <EditText
+            android:id="@+id/etMatricula"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:background="@color/blanco"
+            android:textColorHint="@color/Azul"
+            android:textColor="@color/Azul"
+            android:textSize="18dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/rlMatricula">
+        <TextView
+            android:id="@+id/tVColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Color"
+            android:textSize="20dp"
+            android:layout_centerVertical="true"
+            android:textAllCaps="false"
+            android:textColor="@color/blanco" />
+
+        <Spinner
+            android:id="@+id/spColor"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:background="@color/blanco" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iVCarColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/rlColor" />
+
+    <Button
+        android:id="@+id/btAdd"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="@color/grisclaro"
+        android:textColor="@color/blanco"
+        android:text="Añadir Vehiculo"
+        android:layout_marginTop="48dp"
+        android:layout_below="@+id/iVCarColor"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
+
