@@ -69,4 +69,15 @@
         android:background="@color/blanco"
         android:layout_below="@id/rlVehi">
     </View>
+
+    <LinearLayout
+        android:id="@+id/llListado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:orientation="vertical"
+        android:layout_below="@+id/rlVehi">
+    </LinearLayout>
 </RelativeLayout>
