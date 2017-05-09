@@ -1,4 +1,4 @@
-package com.example.alex.quickpark;
+package com.example.alex.quickpark.conexioneshttp;
 
 import android.app.Activity;
 import android.content.Context;
@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.example.alex.quickpark.inicioregistro.IniciarSesionActivity;
+import com.example.alex.quickpark.maps.MapsActivity;
 
 import org.json.JSONArray;
 

@@ -1,4 +1,4 @@
-package com.example.alex.quickpark;
+package com.example.alex.quickpark.qr;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -10,6 +10,10 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.alex.quickpark.maps.MapsActivity;
+import com.example.alex.quickpark.R;
+import com.example.alex.quickpark.ScanActivity;
+import com.example.alex.quickpark.ajustesusuario.AjustesActivity;
 import com.google.android.gms.vision.barcode.Barcode;
 
 import java.io.Serializable;

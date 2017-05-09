@@ -7,7 +7,7 @@
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:background="@color/Azul"
-    tools:context="com.example.alex.quickpark.IniciarSesionActivity">
+    tools:context="com.example.alex.quickpark.inicioregistro.IniciarSesionActivity">
 
     <Button
         android:id="@+id/bVolver"

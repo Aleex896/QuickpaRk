@@ -31,10 +31,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RegistroActivity"
+            android:name=".inicioregistro.RegistroActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".IniciarSesionActivity"
+            android:name=".inicioregistro.IniciarSesionActivity"
             android:screenOrientation="portrait" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -49,25 +49,25 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".MapsActivity"
+            android:name=".maps.MapsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".QrActivity"
+            android:name=".qr.QrActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AjustesActivity"
+            android:name=".ajustesusuario.AjustesActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ScanActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AjustesUsActivity"
+            android:name=".ajustesusuario.AjustesUsActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".ListaVehiculosActivity"
+            android:name=".ajustesusuario.ListaVehiculosActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".AddCarActivity"
+            android:name=".ajustesusuario.AddCarActivity"
             android:screenOrientation="portrait"/>
     </application>
 

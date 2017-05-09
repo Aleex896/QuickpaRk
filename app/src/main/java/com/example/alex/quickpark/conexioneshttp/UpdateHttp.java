@@ -1,11 +1,13 @@
-package com.example.alex.quickpark;
-
+package com.example.alex.quickpark.conexioneshttp;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.example.alex.quickpark.ajustesusuario.AjustesActivity;
+import com.example.alex.quickpark.ajustesusuario.AjustesUsActivity;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -15,33 +17,34 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * Created by Jose Antonio Picazos on 08/05/2017.
+ * Created by JoseAntonio on 03/05/2017.
  */
 
-public class AddCarHttp extends AsyncTask<Void,Void,String> {
+public class UpdateHttp extends AsyncTask<Void,Void,String> {
 
     private Context mycontext;
     private Activity myActivity;
 
-    public AddCarHttp(Context context, Activity activity){
+    public UpdateHttp(Context context, Activity activity){
         mycontext = context;
         myActivity = activity;
     }
 
     @Override
-    protected String doInBackground(Void... params) {
+    protected String doInBackground(Void... voids) {
         URL url;
         String estat="1";
 
         try{
-            String mail = AddCarActivity.user;
-            String matricula = AddCarActivity.matricula;
-            String color = AddCarActivity.colorSelec;
+            String mail = AjustesUsActivity.email;
+            String name = AjustesUsActivity.nombre;
+            String apellido = AjustesUsActivity.apellido;
+            String pass = AjustesUsActivity.pass;
 
-            url = new URL("http://quickpark.000webhostapp.com/php/addCar.php?mail="+mail+"&car="+matricula+"&color="+color);
+            url = new URL("http://quickpark.000webhostapp.com/php/updateUsuario.php?mail="+mail+"&name="+name+"&ape="+apellido+"&pasw="+pass);
             HttpURLConnection urlConnection=(HttpURLConnection)url.openConnection();
 
-            Log.d("addCar",url.toString());
+            Log.d("registro",url.toString());
             int status = urlConnection.getResponseCode();
 
             Log.d("estatUrl","estat:"+status);
@@ -58,12 +61,12 @@ public class AddCarHttp extends AsyncTask<Void,Void,String> {
                     sb.append(line);
                 }
                 br.close();
-                Log.d("addCar", sb.toString());
+                Log.d("registro", sb.toString());
                 urlConnection.disconnect();
 
                 estat = sb.toString();
 
-                Log.d("addCar",estat);
+                Log.d("registro",estat);
 
             }
         }catch (Exception ex){
@@ -71,7 +74,6 @@ public class AddCarHttp extends AsyncTask<Void,Void,String> {
         }
         return estat;
     }
-
 
     @Override
     protected void onPostExecute(String string) {
@@ -81,17 +83,27 @@ public class AddCarHttp extends AsyncTask<Void,Void,String> {
                 case "1": Log.d("registroEstado","Error Servidor");
                     Toast toast1 = Toast.makeText(mycontext.getApplicationContext(),"Error Servidor",Toast.LENGTH_LONG);
                     toast1.show();
+                    AjustesUsActivity.eTContra.setText(null);
+                    AjustesUsActivity.eTContraR.setText(null);
                     break;
-                case "2": Log.d("registroEstado","Este vehiculo ya existe");
-                    Toast toast2 = Toast.makeText(mycontext.getApplicationContext(),"Este vehiculo ya existe",Toast.LENGTH_LONG);
+                case "2": Log.d("registroEstado","No Existe usuario!");
+                    Toast toast2 = Toast.makeText(mycontext.getApplicationContext(),"No existe el usuario",Toast.LENGTH_LONG);
                     toast2.show();
+                    AjustesUsActivity.eTContra.setText(null);
+                    AjustesUsActivity.eTContraR.setText(null);
                     break;
-                case "3": Log.d("Actu Estado","Insertado Correctamente");
-                    Toast toast3 = Toast.makeText(mycontext.getApplicationContext(),"Insertado Correctamente",Toast.LENGTH_LONG);
+                case "3": Log.d("Actu Estado","Actualizado Correctamente");
+                    Toast toast3 = Toast.makeText(mycontext.getApplicationContext(),"Datos Actualizados Correctamente",Toast.LENGTH_LONG);
                     toast3.show();
 
-                    Intent goaju = new Intent(myActivity, ListaVehiculosActivity.class);
-                    goaju.putExtra("user",AddCarActivity.user);
+                    AjustesUsActivity.eTNombre.setText(null);
+                    AjustesUsActivity.eTApellidos.setText(null);
+                    AjustesUsActivity.eTContra.setText(null);
+                    AjustesUsActivity.eTContraR.setText(null);
+                    AjustesUsActivity.eTCorreo.setText(null);
+
+                    Intent goaju = new Intent(myActivity, AjustesActivity.class);
+                    goaju.putExtra("user",AjustesUsActivity.email);
                     myActivity.startActivity(goaju);
                     break;
             }
@@ -99,4 +111,5 @@ public class AddCarHttp extends AsyncTask<Void,Void,String> {
             e.printStackTrace();
         }
     }
+
 }

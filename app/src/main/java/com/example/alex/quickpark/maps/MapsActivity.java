@@ -1,4 +1,4 @@
-package com.example.alex.quickpark;
+package com.example.alex.quickpark.maps;
 
 import android.Manifest;
 import android.content.Intent;
@@ -15,6 +15,10 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.example.alex.quickpark.FirstScreen;
+import com.example.alex.quickpark.R;
+import com.example.alex.quickpark.ajustesusuario.AjustesActivity;
+import com.example.alex.quickpark.qr.QrActivity;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;

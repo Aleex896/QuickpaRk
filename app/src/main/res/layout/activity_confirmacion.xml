@@ -7,7 +7,7 @@
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:background="@color/Azul"
-    tools:context="com.example.alex.quickpark.ConfirmacionActivity">
+    tools:context="com.example.alex.quickpark.pagos.ConfirmacionActivity">
 
     <ImageView
         android:id="@+id/iVConfirm"

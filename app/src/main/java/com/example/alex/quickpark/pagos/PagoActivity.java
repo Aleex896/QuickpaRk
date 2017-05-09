@@ -1,4 +1,4 @@
-package com.example.alex.quickpark;
+package com.example.alex.quickpark.pagos;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -30,6 +30,9 @@ import com.braintreepayments.api.dropin.DropInResult;
 import com.braintreepayments.api.interfaces.HttpResponseCallback;
 import com.braintreepayments.api.internal.HttpClient;
 import com.braintreepayments.api.models.PaymentMethodNonce;
+import com.example.alex.quickpark.maps.MapsActivity;
+import com.example.alex.quickpark.R;
+import com.example.alex.quickpark.ajustesusuario.AjustesActivity;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package com.example.alex.quickpark;
+package com.example.alex.quickpark.inicioregistro;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.alex.quickpark.FirstScreen;
+import com.example.alex.quickpark.R;
+import com.example.alex.quickpark.conexioneshttp.InicioSessionHttp;
 
 import java.io.Serializable;
 

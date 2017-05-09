@@ -1,4 +1,4 @@
-package com.example.alex.quickpark;
+package com.example.alex.quickpark.ajustesusuario;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +14,9 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.alex.quickpark.R;
+import com.example.alex.quickpark.conexioneshttp.AddCarHttp;
 
 import java.io.Serializable;
 

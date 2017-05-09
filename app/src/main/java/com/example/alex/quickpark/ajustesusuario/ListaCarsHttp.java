@@ -1,4 +1,4 @@
-package com.example.alex.quickpark;
+package com.example.alex.quickpark.ajustesusuario;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,6 +10,9 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.alex.quickpark.ListaVehiculosActivity;
+import com.example.alex.quickpark.R;
 
 import org.json.JSONArray;
 

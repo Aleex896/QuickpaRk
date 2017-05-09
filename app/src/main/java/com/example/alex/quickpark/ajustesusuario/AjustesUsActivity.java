@@ -1,10 +1,10 @@
-package com.example.alex.quickpark;
+package com.example.alex.quickpark.ajustesusuario;
 
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
@@ -12,9 +12,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.alex.quickpark.R;
+import com.example.alex.quickpark.conexioneshttp.UpdateHttp;
+
 import java.io.Serializable;
 
-public class RegistroActivity extends AppCompatActivity implements Serializable {
+public class AjustesUsActivity extends AppCompatActivity implements Serializable {
 
     public static String nombre;
     public static String apellido;
@@ -25,14 +28,16 @@ public class RegistroActivity extends AppCompatActivity implements Serializable 
     public static EditText eTCorreo;
     public static EditText eTContra;
     public static EditText eTContraR;
-    private String passR;
-    private Context context;
 
+    private String passR,user;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registro);
+        setContentView(R.layout.activity_ajustes_us);
+
+
 
         Button bVolver = (Button) findViewById(R.id.bVolver);
         TextView tVRegi = (TextView) findViewById(R.id.tVIniciar);
@@ -42,7 +47,7 @@ public class RegistroActivity extends AppCompatActivity implements Serializable 
         eTCorreo = (EditText) findViewById(R.id.edTCorreo);
         eTContra = (EditText) findViewById(R.id.edTContraseña);
         eTContraR = (EditText) findViewById(R.id.edTContraseñaR);
-        Button  bCrear = (Button) findViewById(R.id.bIniciar);
+        Button  bCrear = (Button) findViewById(R.id.bGuardarDatos);
 
         eTContra.setInputType(InputType.TYPE_CLASS_TEXT |
                 InputType.TYPE_TEXT_VARIATION_PASSWORD);
@@ -59,11 +64,14 @@ public class RegistroActivity extends AppCompatActivity implements Serializable 
         eTContraR.setTypeface(myFont(this));
         bCrear.setTypeface(myFont(this));
 
+        user = getIntent().getStringExtra("user");
+
+        tVDatosUs.setText("Usuario: "+user);
 
         bVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goregistro = new Intent(RegistroActivity.this, FirstScreen.class);
+                Intent goregistro = new Intent(AjustesUsActivity.this, AjustesActivity.class);
                 startActivity(goregistro);
                 finish();
                 overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
@@ -78,14 +86,14 @@ public class RegistroActivity extends AppCompatActivity implements Serializable 
                 passR = eTContraR.getText().toString();
                 nombre = eTNombre.getText().toString();
                 apellido = eTApellidos.getText().toString();
-                email = eTCorreo.getText().toString();
+                email = user;
 
                 if (!pass.equals("") && !passR.equals("") && !nombre.equals("") && !apellido.equals("") && !email.equals("")) {
                     if (passR.equals(pass)) {
                         context = getApplicationContext();
                         try {
-                            new RegistroHttp(context, RegistroActivity.this).execute();
-                            // TODO: PANTALLA DE CARGA ANTES DE ENTRAR AL MAPA
+                            new UpdateHttp(context, AjustesUsActivity.this).execute();
+                            // TODO: PANTALLA DE CARGA
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -106,10 +114,11 @@ public class RegistroActivity extends AppCompatActivity implements Serializable 
     @Override
     public void onBackPressed() {
 
-            Intent goregistro = new Intent(RegistroActivity.this, FirstScreen.class);
-            startActivity(goregistro);
-            finish();
-            overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+        Intent goregistro = new Intent(AjustesUsActivity.this, AjustesActivity.class);
+        goregistro.putExtra("user",user);
+        startActivity(goregistro);
+        finish();
+        overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
     }
 
     // FUNCION PARA ASIGNAR LA FUENTE
