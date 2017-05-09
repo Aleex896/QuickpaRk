@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Azul"
+    tools:context="com.example.alex.quickpark.gestionplaza.SelectorTiempo">
+
+    <TextView
+        android:id="@+id/tVIniciar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp"
+        android:text="Seleccionar tiempo:"
+        android:textColor="@color/blanco"
+        android:textSize="30dp" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/grisoscuro"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="9dp"
+        android:layout_below="@+id/tVIniciar"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/tVHoratxt"
+            android:text="Hora y Fecha Actual"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textColor="@color/blanco"
+            android:textSize="20dp"/>
+
+
+    <TextView
+        android:id="@+id/tVClock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textColor="@color/blanco"
+        android:textSize="25dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="31dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+        <TextView
+        android:id="@+id/tVDate"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textColor="@color/blanco"
+        android:textSize="25dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+            android:layout_below="@+id/tVClock"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+
+</RelativeLayout>

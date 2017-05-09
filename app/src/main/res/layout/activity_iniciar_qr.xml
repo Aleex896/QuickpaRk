@@ -4,19 +4,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/Azul"
     tools:context="com.example.alex.quickpark.qr.IniciarQR">
+
+    <TextView
+        android:id="@+id/tVtitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quick QR Scanner"
+        android:textColor="@color/blanco"
+        android:textSize="35dp"
+        android:layout_marginTop="31dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignEnd="@+id/textExplicacion" />
+
+    <TextView
+        android:id="@+id/textExplicacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="QuickPark, te permite indicar la plaza que estas utilizando leyendo directamente el codigo QR situado en la misma. Pulsa el boton situado mas abajo para abrir tu Quick QR Scanner:"
+        android:textColor="@color/blanco"
+        android:textSize="25dp"
+        android:gravity="center"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_below="@+id/tVtitulo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp" />
+
+    <Button
+        android:id="@+id/botonAtras"
+        android:layout_width="80px"
+        android:layout_height="80px"
+        android:background="@drawable/flecha_izquierda"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignTop="@+id/tVtitulo"
+        android:layout_toStartOf="@+id/tVtitulo"
+        android:layout_marginTop="7dp" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="300px"
         android:layout_height="300px"
-        android:background="@drawable/flecha_izquierda"
+        android:background="@drawable/qron_icon"
         tools:layout_editor_absoluteX="37dp"
         tools:layout_editor_absoluteY="26dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="97dp"
-        android:layout_marginTop="133dp" />
+        android:layout_marginBottom="49dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
 
 
 </RelativeLayout>

@@ -9,7 +9,7 @@ import android.widget.ImageButton;
 
 import com.example.alex.quickpark.R;
 import com.example.alex.quickpark.maps.MapsActivity;
-import com.example.alex.quickpark.qr.QrActivity;
+import com.example.alex.quickpark.qr.IniciarQR;
 
 import java.io.Serializable;
 
@@ -55,7 +55,7 @@ public class AjustesActivity extends AppCompatActivity implements Serializable {
         bQr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goQr = new Intent(AjustesActivity.this, QrActivity.class);
+                Intent goQr = new Intent(AjustesActivity.this, IniciarQR.class);
                 goQr.putExtra("user",user);
                 startActivity(goQr);
                 finish();
