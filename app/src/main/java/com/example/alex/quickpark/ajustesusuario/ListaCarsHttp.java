@@ -2,16 +2,14 @@ package com.example.alex.quickpark.ajustesusuario;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.alex.quickpark.ListaVehiculosActivity;
+
 import com.example.alex.quickpark.R;
 
 import org.json.JSONArray;
@@ -22,7 +20,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.List;
 
 /**
  * Created by JoseAntonio on 09/05/2017.
@@ -97,6 +94,7 @@ public class ListaCarsHttp extends AsyncTask<Void,Void,JSONArray> {
                     tvMatricula.setText(matricula);
                     TextView tvColor = new TextView(mycontext);
                     tvColor.setText(color);
+
                     ImageButton ibModificar = new ImageButton(mycontext);
                     ibModificar.setImageResource(R.drawable.edit);
 

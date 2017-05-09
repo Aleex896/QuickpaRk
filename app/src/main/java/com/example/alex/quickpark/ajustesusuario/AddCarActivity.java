@@ -32,7 +32,6 @@ public class AddCarActivity extends AppCompatActivity implements AdapterView.OnI
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_car);
-
         TextView tvAddCar = (TextView)findViewById(R.id.tVTusVehiculos);
         TextView tvDatos = (TextView)findViewById(R.id.tVListado);
         TextView tvMatricula = (TextView)findViewById(R.id.tVVehiculo);
