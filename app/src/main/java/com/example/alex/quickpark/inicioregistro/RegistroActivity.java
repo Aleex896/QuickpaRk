@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.alex.quickpark.FirstScreen;
+import com.example.alex.quickpark.screeninicial.FirstScreen;
 import com.example.alex.quickpark.R;
 import com.example.alex.quickpark.conexioneshttp.RegistroHttp;
 

@@ -1,4 +1,4 @@
-package com.example.alex.quickpark;
+package com.example.alex.quickpark.qr;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -8,8 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.SparseArray;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.alex.quickpark.R;
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.barcode.Barcode;
@@ -27,6 +30,18 @@ public class ScanActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qr_screen);
+
+        Button flecha = (Button) findViewById(R.id.button2);
+
+        flecha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent gomaps = new Intent(ScanActivity.this, IniciarQR.class);
+                startActivity(gomaps);
+                finish();
+                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+            }
+        });
 
         cameraView = (SurfaceView) findViewById(R.id.cameraView2);
         cameraView.setZOrderMediaOverlay(true);

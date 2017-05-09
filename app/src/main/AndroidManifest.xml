@@ -22,7 +22,7 @@
             android:value="barcode" />
 
         <activity
-            android:name=".FirstScreen"
+            android:name=".screeninicial.FirstScreen"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -58,17 +58,18 @@
             android:name=".ajustesusuario.AjustesActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ScanActivity"
+            android:name=".qr.ScanActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ajustesusuario.AjustesUsActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ajustesusuario.ListaVehiculosActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ajustesusuario.AddCarActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
+        <activity android:name=".qr.IniciarQR"></activity>
     </application>
 
 </manifest>

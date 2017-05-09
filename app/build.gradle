@@ -33,6 +33,6 @@ dependencies {
     compile 'com.journeyapps:zxing-android-embedded:3.2.0@aar'
     compile 'com.braintreepayments.api:drop-in:3.+'
     compile 'com.android.volley:volley:1.0.0'
-    testCompile 'junit:junit:4.12'
     compile 'junit:junit:4.12'
+    testCompile 'junit:junit:4.12'
 }
