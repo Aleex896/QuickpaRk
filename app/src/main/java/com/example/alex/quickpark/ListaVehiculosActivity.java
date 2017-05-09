@@ -8,18 +8,33 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.google.android.gms.vision.text.Line;
 
 import java.io.Serializable;
 
 public class ListaVehiculosActivity extends AppCompatActivity implements Serializable {
 
-    String user;
+    public static String user;
+    public static LinearLayout llListado;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_vehiculos);
+
+        user = getIntent().getStringExtra("user");
+        llListado =(LinearLayout)findViewById(R.id.llListado);
+
+        try{
+            context=getApplicationContext();
+            new ListaCarsHttp(context,ListaVehiculosActivity.this).execute();
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
 
         Button btVolver = (Button) findViewById(R.id.bVolver);
         ImageButton btAddCar = (ImageButton)findViewById(R.id.btAddCar);
@@ -29,7 +44,7 @@ public class ListaVehiculosActivity extends AppCompatActivity implements Seriali
         tvListado.setTypeface(myFont(this));
         tvLCar.setTypeface(myFont(this));
 
-        user = getIntent().getStringExtra("user");
+
 
         btVolver.setOnClickListener(new View.OnClickListener() {
             @Override
