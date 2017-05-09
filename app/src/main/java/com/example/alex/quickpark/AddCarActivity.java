@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.Serializable;
 
@@ -20,8 +21,9 @@ public class AddCarActivity extends AppCompatActivity implements AdapterView.OnI
 
     ImageView ivColor;
     Spinner spColor;
-    String colorSelec="";
-    String matricula,user;
+    Context context;
+    public static String colorSelec="";
+    public static String matricula,user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +34,7 @@ public class AddCarActivity extends AppCompatActivity implements AdapterView.OnI
         TextView tvDatos = (TextView)findViewById(R.id.tVListado);
         TextView tvMatricula = (TextView)findViewById(R.id.tVVehiculo);
         TextView tvColor = (TextView)findViewById(R.id.tVColor);
-        EditText etMatricula = (EditText)findViewById(R.id.etMatricula);
+        final EditText etMatricula = (EditText)findViewById(R.id.etMatricula);
         Button btVolver = (Button)findViewById(R.id.bVolver);
         Button btAnadir = (Button)findViewById(R.id.btAdd);
         spColor = (Spinner)findViewById(R.id.spColor);
@@ -62,6 +64,24 @@ public class AddCarActivity extends AppCompatActivity implements AdapterView.OnI
                 startActivity(goajustes);
                 finish();
                 overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
+            }
+        });
+
+        btAnadir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                matricula = etMatricula.getText().toString();
+                if(!matricula.equals("") && !colorSelec.equals("")){
+                    try{
+                        context=getApplicationContext();
+                        new AddCarHttp(context,AddCarActivity.this).execute();
+                    }catch(Exception ex){
+                        ex.printStackTrace();
+                    }
+                }else{
+                    Toast toast = Toast.makeText(getApplicationContext(), "Faltan campos por rellenar", Toast.LENGTH_LONG);
+                    toast.show();
+                }
             }
         });
     }
