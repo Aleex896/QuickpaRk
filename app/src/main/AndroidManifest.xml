@@ -47,6 +47,7 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+
         <activity
             android:name=".maps.MapsActivity"
             android:screenOrientation="portrait" />
@@ -65,12 +66,16 @@
         <activity
             android:name=".ajustesusuario.AddCarActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".qr.IniciarQR"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".gestionplaza.GestionPlaza"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".gestionplaza.SelectorTiempo"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".qr.IniciarQR"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".gestionplaza.GestionPlaza"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".gestionplaza.SelectorTiempo"
+            android:screenOrientation="portrait" />
+        <activity android:name=".monedero.MonederoActivity"></activity>
     </application>
 
 </manifest>

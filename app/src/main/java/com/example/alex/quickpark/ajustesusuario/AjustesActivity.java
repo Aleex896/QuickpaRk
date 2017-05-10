@@ -6,9 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
 
-
 import com.example.alex.quickpark.R;
 import com.example.alex.quickpark.maps.MapsActivity;
+import com.example.alex.quickpark.monedero.MonederoActivity;
 import com.example.alex.quickpark.qr.IniciarQR;
 
 import java.io.Serializable;
@@ -25,10 +25,23 @@ public class AjustesActivity extends AppCompatActivity implements Serializable {
         ImageButton bMaps = (ImageButton) findViewById(R.id.bMaps);
         ImageButton bQr = (ImageButton) findViewById(R.id.bQr);
         ImageButton bAju = (ImageButton) findViewById(R.id.bPref);
-        ImageButton bAjuUs = (ImageButton) findViewById(R.id.bAjustesUsu);
+        final ImageButton bAjuUs = (ImageButton) findViewById(R.id.bAjustesUsu);
         ImageButton bCars = (ImageButton) findViewById(R.id.bAjustesVehi);
+        ImageButton bmone = (ImageButton) findViewById(R.id.bAjustesMon);
 
         user =getIntent().getStringExtra("user");
+
+        bmone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent gomone = new Intent(AjustesActivity.this, MonederoActivity.class);
+                gomone.putExtra("user",user);
+                startActivity(gomone);
+                finish();
+                overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
+
+            }
+        });
 
         bAjuUs.setOnClickListener(new View.OnClickListener() {
             @Override
