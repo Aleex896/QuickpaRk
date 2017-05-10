@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -76,6 +77,7 @@ public class AddCarActivity extends AppCompatActivity implements AdapterView.OnI
                 if(!matricula.equals("") && !colorSelec.equals("")){
                     try{
                         context=getApplicationContext();
+                        Log.d("addCar","click");
                         new AddCarHttp(context,AddCarActivity.this).execute();
                     }catch(Exception ex){
                         ex.printStackTrace();

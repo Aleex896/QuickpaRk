@@ -62,9 +62,8 @@ public class IniciarSesionActivity extends AppCompatActivity implements Serializ
 
                 if(!userMail.equals("") && !password.equals("")){
                     context = getApplicationContext();
-                    generarXML();
+                    //generarXML();
                     new InicioSessionHttp(context, IniciarSesionActivity.this).execute();
-
                 }
                 else
                 {
