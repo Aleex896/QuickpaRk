@@ -2,10 +2,17 @@ package com.example.alex.quickpark.ajustesusuario;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -81,31 +88,33 @@ public class ListaCarsHttp extends AsyncTask<Void,Void,JSONArray> {
 
             if(jsonArray!=null){
                 Log.d("listaCars","Array lleno");
+
+                TableLayout tbLayout = ListaVehiculosActivity.table;
+
                 for(int i=0;i<jsonArray.length();i++){
                     String matricula = jsonArray.getJSONObject(i).getString("matricula").toString();
                     String color = jsonArray.getJSONObject(i).getString("color").toString();
 
-                    LinearLayout rlCar = new LinearLayout(mycontext);
-                    rlCar.setOrientation(LinearLayout.HORIZONTAL);
-                    rlCar.setWeightSum(1);
-                    rlCar.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT));
-                    TextView tvMatricula = new TextView(mycontext);
-                    tvMatricula.setText(matricula);
-                    TextView tvColor = new TextView(mycontext);
-                    tvColor.setText(color);
+                    TableRow tableRow = new TableRow(mycontext);
+                    tableRow.setVerticalGravity(1);
+                    tbLayout.addView(tableRow);
 
-                    ImageButton ibModificar = new ImageButton(mycontext);
-                    ibModificar.setImageResource(R.drawable.edit);
+                    TextView matri = new TextView(mycontext);
+                    matri.setGravity(Gravity.CENTER);
+                    matri.setText(matricula);
+                    matri.setTextSize(20);
+                    matri.setTypeface(myFont(mycontext));
+                    tableRow.addView(matri);
 
-                    rlCar.addView(tvMatricula);
-                    rlCar.addView(tvColor);
-                    rlCar.addView(ibModificar);
+                    TextView colo = new TextView(mycontext);
+                    colo.setGravity(Gravity.CENTER);
+                    colo.setText(color);
+                    colo.setTextSize(20);
+                    colo.setTypeface(myFont(mycontext));
+                    tableRow.addView(colo);
 
-                    ListaVehiculosActivity.llListado.addView(rlCar);
-
-
-                    Log.d("listaCars",matricula+"-"+color);
                 }
+                ListaVehiculosActivity.llListado.addView(tbLayout);
                 Toast toast = Toast.makeText(mycontext.getApplicationContext(),"Vehiculos cargados",Toast.LENGTH_LONG);
                 toast.show();
 
@@ -119,4 +128,10 @@ public class ListaCarsHttp extends AsyncTask<Void,Void,JSONArray> {
         }
 
     }
+
+    public static Typeface myFont(Context context) {
+        return Typeface.createFromAsset(context.getAssets(), "fonts/Walkway SemiBold.ttf");
+    }
+
+
 }

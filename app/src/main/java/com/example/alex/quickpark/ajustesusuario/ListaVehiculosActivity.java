@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TableLayout;
 import android.widget.TextView;
 
 import com.example.alex.quickpark.R;
@@ -19,6 +20,7 @@ public class ListaVehiculosActivity extends AppCompatActivity implements Seriali
 
     public static String user;
     public static LinearLayout llListado;
+    public static TableLayout table;
     Context context;
 
     @Override
@@ -28,6 +30,7 @@ public class ListaVehiculosActivity extends AppCompatActivity implements Seriali
 
         user = getIntent().getStringExtra("user");
         llListado =(LinearLayout)findViewById(R.id.llListado);
+        table = (TableLayout) findViewById(R.id.tablelayout);
 
         try{
             context=getApplicationContext();
@@ -40,9 +43,13 @@ public class ListaVehiculosActivity extends AppCompatActivity implements Seriali
         ImageButton btAddCar = (ImageButton)findViewById(R.id.btAddCar);
         TextView tvLCar = (TextView)findViewById(R.id.tVTusVehiculos);
         TextView tvListado = (TextView)findViewById(R.id.tVListado);
+        TextView trMatricula = (TextView)findViewById(R.id.trMatricula);
+        TextView trColor = (TextView)findViewById(R.id.trColor);
 
         tvListado.setTypeface(myFont(this));
         tvLCar.setTypeface(myFont(this));
+        trColor.setTypeface(myFont(this));
+        trMatricula.setTypeface(myFont(this));
 
 
 

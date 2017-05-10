@@ -6,6 +6,8 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
+import android.util.Log;
+import android.util.Xml;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +18,10 @@ import com.example.alex.quickpark.screeninicial.FirstScreen;
 import com.example.alex.quickpark.R;
 import com.example.alex.quickpark.conexioneshttp.InicioSessionHttp;
 
+import org.xmlpull.v1.XmlSerializer;
+
+import java.io.FileNotFoundException;
+import java.io.OutputStreamWriter;
 import java.io.Serializable;
 
 public class IniciarSesionActivity extends AppCompatActivity implements Serializable{
@@ -56,6 +62,7 @@ public class IniciarSesionActivity extends AppCompatActivity implements Serializ
 
                 if(!userMail.equals("") && !password.equals("")){
                     context = getApplicationContext();
+                    generarXML();
                     new InicioSessionHttp(context, IniciarSesionActivity.this).execute();
 
                 }
@@ -92,5 +99,37 @@ public class IniciarSesionActivity extends AppCompatActivity implements Serializ
     // FUNCION PARA ASIGNAR LA FUENTE
     public static Typeface myFont(Context context) {
         return Typeface.createFromAsset(context.getAssets(), "fonts/Walkway SemiBold.ttf");
+    }
+
+    public void generarXML(){
+
+        try {
+            //Creamos el serializer
+            XmlSerializer ser = Xml.newSerializer();
+
+            //Creamos un fichero en memoria interna
+            OutputStreamWriter fout =
+                    new OutputStreamWriter(
+                            openFileOutput("prueba_pull.xml",
+                                    Context.MODE_PRIVATE));
+            //Asignamos el resultado del serializer al fichero
+            ser.setOutput(fout);
+            //Construimos el XML
+            ser.startTag("", "usuario");
+
+            ser.startTag("", "mail");
+            ser.text(userMail);
+            ser.endTag("", "mail");
+
+            ser.endTag("", "usuario");
+
+            ser.endDocument();
+
+            fout.close();
+
+            Log.d("xml","creado");
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
     }
 }

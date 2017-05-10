@@ -5,19 +5,24 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.util.Xml;
 import android.widget.Toast;
 
 import com.example.alex.quickpark.inicioregistro.IniciarSesionActivity;
 import com.example.alex.quickpark.maps.MapsActivity;
 
 import org.json.JSONArray;
+import org.xmlpull.v1.XmlSerializer;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
+import static com.example.alex.quickpark.inicioregistro.IniciarSesionActivity.userMail;
 
 /**
  * Created by JoseAntonio on 03/05/2017.
@@ -45,7 +50,7 @@ public class InicioSessionHttp extends AsyncTask<Void,Void,JSONArray> {
 
 
         try{
-            String mail = IniciarSesionActivity.userMail;
+            String mail = userMail;
             passU =IniciarSesionActivity.password;
 
 
@@ -99,7 +104,7 @@ public class InicioSessionHttp extends AsyncTask<Void,Void,JSONArray> {
                 IniciarSesionActivity.correo.setText(null);
 
                 Intent gomap = new Intent(myActivity, MapsActivity.class);
-                gomap.putExtra("user",IniciarSesionActivity.userMail);
+                gomap.putExtra("user", userMail);
                 myActivity.startActivity(gomap);
 
             }else{
