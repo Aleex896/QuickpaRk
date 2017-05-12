@@ -18,17 +18,37 @@
         android:textColor="@color/blanco"
         android:textSize="30dp" />
 
+    <TextView
+        android:id="@+id/horausuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_below="@+id/relativeLayout2"
+        android:layout_alignStart="@+id/relativeLayout2" />
+
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="155dp"
         android:orientation="vertical"
         android:background="@color/grisoscuro"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:layout_marginTop="9dp"
         android:layout_below="@+id/tVIniciar"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:id="@+id/relativeLayout2">
+
+        <Button
+            android:id="@+id/bSelecTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/Azul"
+            android:text="Seleccionar tiempo"
+            android:layout_below="@+id/tVDate"
+            android:textAllCaps="false"
+            android:layout_margin="5dp"
+            android:layout_centerHorizontal="true" />
 
         <TextView
             android:id="@+id/tVHoratxt"
@@ -37,6 +57,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:textColor="@color/blanco"
+
             android:textSize="20dp"/>
 
 
