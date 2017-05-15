@@ -145,7 +145,7 @@ public class SelectorTiempo extends AppCompatActivity{
                 {
                     if(selectedHour==20 && selectedMinute>0)
                     {
-                        Toast.makeText(SelectorTiempo.this, "A partir de las 20:00H puedes aparcar gratis hasta las 8:00H", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SelectorTiempo.this, "A partir de las 20:00H puedes aparcar gratis hasta las 8:00H de mañana", Toast.LENGTH_SHORT).show();
                         return false;
                     }
                     else

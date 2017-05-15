@@ -55,6 +55,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentRight="true"
+            android:scaleType="fitCenter"
             android:background="@color/Azul"
             android:src="@drawable/anadir_boton_cuadrado" />
     </RelativeLayout>
