@@ -27,13 +27,25 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_height="500dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
+        android:layout_marginTop="2dp"
         android:background="@color/grisclaro"
         android:id="@+id/relativeLayout"
         android:layout_below="@+id/tVIniciar"
         android:layout_centerHorizontal="true">
+
+        <TextView
+            android:text="test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/Azul"
+            android:textSize="30dp"
+            android:id="@+id/tVZona"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/relativeLayout3"
+            android:layout_marginTop="16dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -42,14 +54,13 @@
             android:textColor="@color/blanco"
             android:textSize="17dp"
             android:id="@+id/tVPoblacion"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="25dp" />
+            android:layout_marginTop="14dp"
+            android:layout_below="@+id/tVZona"
+            android:layout_alignStart="@+id/tVZona" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Granollers"
             android:textColor="@color/Azul"
             android:textSize="17dp"
             android:id="@+id/tVPoblacion2"
@@ -63,16 +74,16 @@
             android:text="Calle: "
             android:textColor="@color/blanco"
             android:textSize="17dp"
-            android:layout_marginTop="10dp"
             android:id="@+id/textView2"
             android:layout_below="@+id/tVPoblacion"
-            android:layout_alignStart="@+id/tVPoblacion" />
+            android:layout_alignStart="@+id/tVPoblacion"
+            android:layout_marginTop="12dp" />
 
         <TextView
+            android:id="@+id/tVcalle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/Azul"
-            android:text="Carrer de Sant Josep"
             android:textSize="17dp"
             android:layout_alignBaseline="@+id/textView2"
             android:layout_alignBottom="@+id/textView2"
@@ -80,115 +91,132 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="225dp"
+            android:layout_height="270dp"
             android:background="@color/blanco"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:layout_marginTop="13dp"
-            android:layout_below="@+id/textView2"
-            android:layout_centerHorizontal="true">
+
+            android:id="@+id/relativeLayout3"
+            android:layout_below="@+id/tVPoblacion"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="47dp">
 
             <TextView
+                android:id="@+id/tVidplaza"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Zona A"
-                android:textColor="@color/Azul"
-                android:textSize="25dp"
-                android:layout_marginTop="20dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="12dp"
-                android:id="@+id/tVZona" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Precio Minimo: "
+                android:text="plaza"
                 android:textColor="@color/Azul"
                 android:textSize="17dp"
-                android:layout_below="@+id/tVZona"
-                android:layout_alignStart="@+id/tVZona"
-                android:layout_marginTop="11dp"
-                android:id="@+id/textView4" />
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/tVPrecioMinimo"
+                android:layout_marginTop="12dp" />
 
+            <TextView
+                android:id="@+id/tVTurno"
+                android:text="turno"
+                android:textSize="17dp"
+                android:textColor="@color/negro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_below="@+id/tVidplaza"
+                android:layout_alignStart="@+id/tVPrecioMinimo" />
             <TextView
                 android:id="@+id/tVPrecioMinimo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0.2 €"
-                android:background="@color/Azul"
-                android:textColor="@color/blanco"
-                android:textSize="17dp"
-                android:layout_above="@+id/textView5"
-                android:layout_toEndOf="@+id/textView7" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Precio hasta 1 hora: "
+                android:text="Importe Mínimo: "
                 android:textColor="@color/Azul"
                 android:textSize="17dp"
-                android:layout_below="@+id/textView4"
-                android:layout_alignStart="@+id/textView4"
-                android:layout_marginTop="11dp"
-                android:id="@+id/textView5" />
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="25dp"
+                android:layout_below="@+id/tVTurno"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:id="@+id/tVPrecioMinimo2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="preciominimo"
+                android:textColor="@color/blanco"
+                android:background="@color/Azul"
+                android:textSize="17dp"
+                android:layout_alignBaseline="@+id/tVPrecioMinimo"
+                android:layout_alignBottom="@+id/tVPrecioMinimo"
+                android:layout_toEndOf="@+id/tVPrecioMinimo"
+                android:layout_marginStart="11dp" />
+
+            <TextView
+                android:id="@+id/tVPrecioMaximo"
+                android:text="Importe Máximo: "
+                android:textSize="17dp"
+                android:textColor="@color/Azul"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tVPrecioMinimo"
+                android:layout_alignStart="@+id/tVPrecioMinimo"
+                android:layout_marginTop="9dp" />
+
+            <TextView
+                android:id="@+id/tVPrecioMaximo2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="preciomax"
+                android:textColor="@color/blanco"
+                android:background="@color/Azul"
+                android:textSize="17dp"
+                android:layout_alignBaseline="@+id/tVPrecioMaximo"
+                android:layout_alignBottom="@+id/tVPrecioMaximo"
+                android:layout_alignStart="@+id/tVPrecioMinimo2" />
 
             <TextView
                 android:id="@+id/tVPrimeraHora"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1.80 €"
-                android:background="@color/Azul"
-                android:textColor="@color/blanco"
-                android:textSize="17dp"
-                android:layout_above="@+id/textView6"
-                android:layout_toEndOf="@+id/textView5" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Precio después de 1 hora: "
+                android:text="Hasta 60Min: "
                 android:textColor="@color/Azul"
                 android:textSize="17dp"
-                android:layout_marginTop="11dp"
-                android:layout_below="@+id/textView5"
-                android:layout_alignStart="@+id/textView5"
-                android:id="@+id/textView6" />
+                android:layout_marginBottom="11dp"
+                android:layout_above="@+id/tVSegundaHora"
+                android:layout_alignStart="@+id/tVPrecioMaximo" />
+
+            <TextView
+                android:id="@+id/tVPrimeraHora2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="primerahora"
+                android:textColor="@color/blanco"
+                android:background="@color/Azul"
+                android:textSize="17dp"
+                android:layout_alignBaseline="@+id/tVPrimeraHora"
+                android:layout_alignBottom="@+id/tVPrimeraHora"
+                android:layout_alignStart="@+id/tVSegundaHora2" />
 
             <TextView
                 android:id="@+id/tVSegundaHora"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1.95 €"
-                android:background="@color/Azul"
-                android:textColor="@color/blanco"
-                android:textSize="17dp"
-                android:layout_alignBaseline="@+id/textView6"
-                android:layout_alignBottom="@+id/textView6"
-                android:layout_toEndOf="@+id/textView6" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Precio Máximo: "
                 android:textColor="@color/Azul"
                 android:textSize="17dp"
-                android:layout_marginTop="11dp"
-                android:layout_marginBottom="20dp"
-                android:layout_below="@+id/textView6"
-                android:layout_alignStart="@+id/textView6"
-                android:id="@+id/textView7" />
-            <TextView
-                android:id="@+id/tVPrecioMaximo"
+                android:text="Hasta 120Min: "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="3.75 €"
-                android:background="@color/Azul"
+                android:layout_alignParentBottom="true"
+                android:layout_alignStart="@+id/tVPrimeraHora"
+                android:layout_marginBottom="19dp" />
+
+            <TextView
+                android:id="@+id/tVSegundaHora2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="segundahora"
                 android:textColor="@color/blanco"
+                android:background="@color/Azul"
                 android:textSize="17dp"
-                android:layout_alignBaseline="@+id/textView7"
-                android:layout_alignBottom="@+id/textView7"
-                android:layout_toEndOf="@+id/textView7" />
+                android:layout_alignBaseline="@+id/tVSegundaHora"
+                android:layout_alignBottom="@+id/tVSegundaHora"
+                android:layout_alignEnd="@+id/tVPrecioMinimo2" />
+
+
         </RelativeLayout>
     </RelativeLayout>
 
@@ -200,7 +228,7 @@
         android:textColor="@color/blanco"
         android:text="Continuar"
         android:textAllCaps="false"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="29dp"
         android:layout_alignBottom="@+id/relativeLayout"
         android:layout_centerHorizontal="true" />
 

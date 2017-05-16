@@ -111,9 +111,14 @@ public class SelectorTiempo extends AppCompatActivity{
             }
             else
             {
-                return true;
+                if(selectedHour-hour>=2)
+                {
+                    Toast.makeText(SelectorTiempo.this, "Lo siento, no se pueden superar las 2 horas", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
             }
         }
+        return true;
     }
 
     private boolean comprovarHorario(int selectedHour, int selectedMinute, int hour, int minute)

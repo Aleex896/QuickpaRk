@@ -48,11 +48,14 @@ public class ScanActivity extends AppCompatActivity {
         holder = cameraView.getHolder();
         barcode = new BarcodeDetector.Builder(this).setBarcodeFormats(Barcode.QR_CODE).build();
 
+
+
         if(!barcode.isOperational()){
             Toast.makeText(this, "No se pudo iniciar el detector", Toast.LENGTH_SHORT).show();
             this.finish();
         }
-        cameraSource = new CameraSource.Builder(this, barcode).setFacing(CameraSource.CAMERA_FACING_BACK)
+        cameraSource = new CameraSource.Builder(this, barcode)
+                .setFacing(CameraSource.CAMERA_FACING_BACK)
                 .setRequestedFps(24)
                 .setAutoFocusEnabled(true)
                 .setRequestedPreviewSize(1920,1024)
@@ -62,7 +65,15 @@ public class ScanActivity extends AppCompatActivity {
             public void surfaceCreated(SurfaceHolder holder) {
                 if(ContextCompat.checkSelfPermission(ScanActivity.this, android.Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED){
                     try {
+
+                        try{
+                            Thread.sleep(500);
+                        }catch (Exception ex)
+                        {
+
+                        }
                         cameraSource.start(cameraView.getHolder());
+
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -88,6 +99,12 @@ public class ScanActivity extends AppCompatActivity {
             @Override
             public void receiveDetections(Detector.Detections<Barcode> detections) {
                 final SparseArray<Barcode> barcode = detections.getDetectedItems();
+                try{
+                    Thread.sleep(500);
+                }catch (Exception ex)
+                {
+
+                }
                 if(barcode.size() > 0)
                 {
                     Intent intent = new Intent();
@@ -97,5 +114,14 @@ public class ScanActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent goregistro = new Intent(ScanActivity.this, IniciarQR.class);
+        goregistro.setFlags(goregistro.FLAG_ACTIVITY_NEW_TASK | goregistro.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(goregistro);
+        finish();
+        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
     }
 }

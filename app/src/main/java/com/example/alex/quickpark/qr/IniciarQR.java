@@ -40,9 +40,16 @@ public class IniciarQR extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //ActivityCompat.requestPermissions(this,new String[]{android.Manifest.permission.CAMERA}, PackageManager.PERMISSION_GRANTED);
+                try{
+                    Thread.sleep(500);
+                }catch (Exception ex)
+                {
 
+                }
                 Intent intent = new Intent(IniciarQR.this, ScanActivity.class);
                 startActivityForResult(intent, REQUEST_CODE);
+
+
             }
         });
 

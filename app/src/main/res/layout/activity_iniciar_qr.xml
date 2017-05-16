@@ -50,10 +50,17 @@
         android:background="@drawable/qron_icon"
         tools:layout_editor_absoluteX="37dp"
         tools:layout_editor_absoluteY="26dp"
-        android:layout_marginBottom="49dp"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/textExplicacion"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="107dp" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:visibility="invisible"
+        android:layout_below="@+id/button2"
         android:layout_centerHorizontal="true" />
-
-
 
 </RelativeLayout>

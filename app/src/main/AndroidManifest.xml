@@ -76,7 +76,8 @@
             android:name=".gestionplaza.SelectorTiempo"
             android:screenOrientation="portrait" />
         <activity android:name=".monedero.MonederoActivity" />
-        <activity android:name=".pagos.RecargarActivity"></activity>
+        <activity android:name=".pagos.RecargarActivity" />
+        <activity android:name=".splash.SplashScreenActivity"></activity>
     </application>
 
 </manifest>
