@@ -29,6 +29,7 @@ public class SelectorTiempo extends AppCompatActivity{
 
     private RelativeLayout rtiket;
     private TextView hasta;
+    private int totalFinal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,14 +137,47 @@ public class SelectorTiempo extends AppCompatActivity{
             }
             else
             {
-                if(selectedHour-hour>=2)
+                totalFinal = mas2horas(selectedHour, hour,selectedMinute,minute);
+                if(totalFinal>120)
                 {
                     Toast.makeText(SelectorTiempo.this, "Lo siento, no se pueden superar las 2 horas", Toast.LENGTH_SHORT).show();
                     return false;
                 }
+                else
+                {
+                    return true;
+                }
             }
         }
-        return true;
+    }
+
+    private int mas2horas(int selectedHour, int hour, int selectedMinute, int minute){
+
+        int horas;
+        int minutos;
+        int total;
+
+        int horaA;
+        int minutosA;
+        int totalA;
+
+        int totalFinal;
+
+        horas = selectedHour *60;
+        minutos = selectedMinute;
+
+        total = horas + minutos;
+
+        horaA = hour * 60;
+        minutosA = minute;
+        totalA = horaA + minutosA;
+
+        totalFinal = total - totalA;
+
+        return  totalFinal;
+
+
+
     }
 
     private boolean comprovarHorario(int selectedHour, int selectedMinute, int hour, int minute)
@@ -210,6 +244,20 @@ public class SelectorTiempo extends AppCompatActivity{
     }
 
     private void calculartarifa(int selectedHour, int selectedMinute, int hour, int minute, String preciomin, String preciomax, String precioprimerahora, String preciosegundahora){
+
+
+
+        TextView tvFtiempo = (TextView)findViewById(R.id.tVFtiempo);
+        TextView tvFtarifa = (TextView)findViewById(R.id.tVFtarifa);
+
+        int horasOcu;
+        int minutosOcu;
+
+
+        horasOcu = totalFinal;
+
+        tvFtiempo.setText(""+horasOcu);
+
 
 
 
