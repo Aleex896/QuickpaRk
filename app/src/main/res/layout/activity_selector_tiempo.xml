@@ -18,13 +18,29 @@
         android:textColor="@color/blanco"
         android:textSize="30dp" />
 
+
+
+    <TextView
+        android:id="@+id/tVPuedesAparcar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relativeLayout2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="19dp"
+        android:text="Puedes aparcar hasta:"
+        android:textColor="@color/blanco"
+        android:textSize="25dp" />
+
     <TextView
         android:id="@+id/horausuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="61dp"
+        android:textSize="22dp"
+        android:textColor="@color/blanco"
+        android:text="hasta"
         android:layout_below="@+id/relativeLayout2"
-        android:layout_alignStart="@+id/relativeLayout2" />
+        android:layout_centerHorizontal="true" />
 
 
     <RelativeLayout
@@ -57,7 +73,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:textColor="@color/blanco"
-            android:textSize="20dp"/>
+            android:textSize="25dp"/>
 
 
     <TextView
@@ -84,6 +100,120 @@
         android:layout_marginRight="5dp"
             android:layout_below="@+id/tVClock"
             android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rltiquet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/blanco"
+        android:layout_margin="15dp"
+        android:layout_marginTop="11dp"
+        android:layout_below="@+id/horausuario"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Resumen de tu selección:"
+            android:textColor="@color/Azul"
+            android:textSize="25dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/textView3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tiempo"
+            android:textColor="@color/Azul"
+            android:textSize="20dp"
+            android:layout_marginTop="24dp"
+            android:layout_below="@+id/textView3"
+            android:layout_alignStart="@+id/textView3"
+            android:id="@+id/textView4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="X"
+            android:textColor="@color/Azul"
+            android:textSize="20dp"
+            android:layout_alignBaseline="@+id/textView4"
+            android:layout_alignBottom="@+id/textView4"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/textView5" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tarifa"
+            android:textSize="20dp"
+            android:textColor="@color/Azul"
+            android:layout_alignBaseline="@+id/textView5"
+            android:layout_alignBottom="@+id/textView5"
+            android:layout_alignEnd="@+id/textView3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ftiempo"
+            android:textColor="@color/Azul"
+            android:textSize="20dp"
+            android:id="@+id/tVFtiempo"
+            android:layout_below="@+id/textView4"
+            android:layout_alignStart="@+id/textView4"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ftarifa"
+            android:textColor="@color/Azul"
+            android:textSize="20dp"
+            android:id="@+id/tVFtarifa"
+            android:layout_alignBaseline="@+id/tVFtiempo"
+            android:layout_alignBottom="@+id/tVFtiempo"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="40dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total a pagar"
+            android:textSize="20dp"
+            android:textColor="@color/Azul"
+            android:id="@+id/textView7"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ftotal"
+            android:textSize="20dp"
+            android:id="@+id/tVFtotal"
+            android:textColor="@color/Azul"
+            android:layout_marginTop="13dp"
+            android:layout_below="@+id/textView7"
+            android:layout_centerHorizontal="true" />
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:background="@color/Azul"
+            android:textColor="@color/blanco"
+            android:text="Pagar "
+            android:textSize="22dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="26dp" />
+
+
+
+
+
+
     </RelativeLayout>
 
 </RelativeLayout>

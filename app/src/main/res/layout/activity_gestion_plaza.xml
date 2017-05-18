@@ -37,7 +37,6 @@
         android:layout_centerHorizontal="true">
 
         <TextView
-            android:text="test"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/Azul"
@@ -97,9 +96,9 @@
             android:layout_marginRight="15dp"
 
             android:id="@+id/relativeLayout3"
-            android:layout_below="@+id/tVPoblacion"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="47dp">
+            android:layout_marginTop="16dp"
+            android:layout_below="@+id/textView2"
+            android:layout_alignParentStart="true">
 
             <TextView
                 android:id="@+id/tVidplaza"
@@ -114,7 +113,6 @@
 
             <TextView
                 android:id="@+id/tVTurno"
-                android:text="turno"
                 android:textSize="17dp"
                 android:textColor="@color/negro"
                 android:layout_width="wrap_content"
@@ -138,7 +136,6 @@
                 android:id="@+id/tVPrecioMinimo2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="preciominimo"
                 android:textColor="@color/blanco"
                 android:background="@color/Azul"
                 android:textSize="17dp"
@@ -162,7 +159,6 @@
                 android:id="@+id/tVPrecioMaximo2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="preciomax"
                 android:textColor="@color/blanco"
                 android:background="@color/Azul"
                 android:textSize="17dp"
@@ -185,13 +181,12 @@
                 android:id="@+id/tVPrimeraHora2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="primerahora"
                 android:textColor="@color/blanco"
                 android:background="@color/Azul"
                 android:textSize="17dp"
                 android:layout_alignBaseline="@+id/tVPrimeraHora"
                 android:layout_alignBottom="@+id/tVPrimeraHora"
-                android:layout_alignStart="@+id/tVSegundaHora2" />
+                android:layout_toEndOf="@+id/tVPrecioMinimo" />
 
             <TextView
                 android:id="@+id/tVSegundaHora"
@@ -208,13 +203,12 @@
                 android:id="@+id/tVSegundaHora2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="segundahora"
                 android:textColor="@color/blanco"
                 android:background="@color/Azul"
                 android:textSize="17dp"
                 android:layout_alignBaseline="@+id/tVSegundaHora"
                 android:layout_alignBottom="@+id/tVSegundaHora"
-                android:layout_alignEnd="@+id/tVPrecioMinimo2" />
+                android:layout_alignStart="@+id/tVPrimeraHora2" />
 
 
         </RelativeLayout>

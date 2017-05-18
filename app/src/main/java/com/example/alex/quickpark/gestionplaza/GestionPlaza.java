@@ -32,6 +32,11 @@ public class GestionPlaza extends AppCompatActivity {
     public static TextView tvTurno;
     public static TextView tVidPlaza;
 
+    private String preciomin;
+    private String preciomax;
+    private String precioprimerahora;
+    private String preciosegundahora;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +44,7 @@ public class GestionPlaza extends AppCompatActivity {
         setContentView(R.layout.activity_gestion_plaza);
 
         Button continuar = (Button)findViewById(R.id.bContinuar);
-         tvZona = (TextView)findViewById(R.id.tVZona);
+        tvZona = (TextView)findViewById(R.id.tVZona);
         tvpreciomin = (TextView)findViewById(R.id.tVPrecioMinimo2);
         tVPrimeraHora = (TextView)findViewById(R.id.tVPrimeraHora2);
         tVSegundaHora = (TextView)findViewById(R.id.tVSegundaHora2);
@@ -48,6 +53,11 @@ public class GestionPlaza extends AppCompatActivity {
         tVPoblacion2 = (TextView)findViewById(R.id.tVPoblacion2);
         tvTurno = (TextView)findViewById(R.id.tVTurno);
         tVidPlaza = (TextView)findViewById(R.id.tVidplaza);
+
+
+
+
+
 
 
         continuar.setOnClickListener(new View.OnClickListener() {
@@ -81,13 +91,11 @@ public class GestionPlaza extends AppCompatActivity {
         try {
             new ConsultaPlazaHttp(context,idPlaza,calle,turno).execute();
             // TODO: PANTALLA DE CARGA
-
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
 
 
     @Override

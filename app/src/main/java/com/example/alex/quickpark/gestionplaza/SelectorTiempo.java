@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -21,6 +22,14 @@ public class SelectorTiempo extends AppCompatActivity{
     Button btiempo;
     TextView tiempousuario;
 
+    public static String preciomin;
+    public static String preciomax;
+    public static String precioprimerahora;
+    public static String preciosegundahora;
+
+    private RelativeLayout rtiket;
+    private TextView hasta;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +39,19 @@ public class SelectorTiempo extends AppCompatActivity{
         fecha = (TextView) findViewById(R.id.tVDate);
         btiempo = (Button) findViewById(R.id.bSelecTime);
 
+        TextView test = (TextView)findViewById(R.id.test);
+        hasta = (TextView)findViewById(R.id.tVPuedesAparcar);
+        rtiket = (RelativeLayout)findViewById(R.id.rltiquet);
         tiempousuario = (TextView) findViewById(R.id.horausuario);
+
+        hasta.setVisibility(View.INVISIBLE);
+        rtiket.setVisibility(View.INVISIBLE);
+        tiempousuario.setVisibility(View.INVISIBLE);
+
+        preciomin = "0.2";
+        preciomax = ConsultaPlazaHttp.precio;
+        precioprimerahora = ConsultaPlazaHttp.precio60;
+        preciosegundahora = ConsultaPlazaHttp.precio120;
 
 
         btiempo.setOnClickListener(new View.OnClickListener() {
@@ -49,27 +70,31 @@ public class SelectorTiempo extends AppCompatActivity{
                         {
                             if(comprovarHorario(selectedHour,selectedMinute,hour, minute))
                             {
-                                Toast.makeText(SelectorTiempo.this, "Hora seleccionada correctamente", Toast.LENGTH_LONG).show();
+                                Toast.makeText(SelectorTiempo.this, "Hora seleccionada correctamente", Toast.LENGTH_SHORT).show();
                                 if(selectedMinute<10)
                                 {
-                                    tiempousuario.setText("Puedes aparcar hasta:"+selectedHour + ":0" + selectedMinute);
+                                    tiempousuario.setVisibility(View.VISIBLE);
+                                    hasta.setVisibility(View.VISIBLE);
+                                    rtiket.setVisibility(View.VISIBLE);
+                                    tiempousuario.setText(selectedHour + ":0" + selectedMinute);
+                                    calculartarifa(selectedHour,selectedMinute,hour, minute, preciomin, preciomax, precioprimerahora, preciosegundahora);
                                 }
                                 else
                                 {
-                                    tiempousuario.setText("Puedes aparcar hasta:"+selectedHour + ":" + selectedMinute);
+                                    tiempousuario.setVisibility(View.VISIBLE);
+                                    hasta.setVisibility(View.VISIBLE);
+                                    rtiket.setVisibility(View.VISIBLE);
+                                    tiempousuario.setText(selectedHour + ":" + selectedMinute);
+                                    calculartarifa(selectedHour,selectedMinute,hour, minute, preciomin, preciomax, precioprimerahora, preciosegundahora);
                                 }
-
                             }
-
                         }
-
                     }
                 }, hour, minute, true);//Yes 24 hour time
-                mTimePicker.setTitle("Selecciona hasta que hora quieres aparcar");
+                mTimePicker.setTitle("¿ Hasta que hora quieres aparcar ?");
                 mTimePicker.show();
             }
         });
-
 
         Thread t = new Thread() {
             @Override
@@ -91,9 +116,9 @@ public class SelectorTiempo extends AppCompatActivity{
 
         t.start();
         textoqr = getIntent().getStringExtra("textoqr");
-        Toast.makeText(SelectorTiempo.this, "texto:" + textoqr, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(SelectorTiempo.this, "texto:" + textoqr, Toast.LENGTH_SHORT).show();
 
-    } // acaba ONCREATE
+    }
 
     private boolean validarHora(int selectedHour, int selectedMinute, int hour, int minute)
     {
@@ -184,6 +209,11 @@ public class SelectorTiempo extends AppCompatActivity{
         }
     }
 
+    private void calculartarifa(int selectedHour, int selectedMinute, int hour, int minute, String preciomin, String preciomax, String precioprimerahora, String preciosegundahora){
+
+
+
+    }
 
 
     private void updateTextView() {

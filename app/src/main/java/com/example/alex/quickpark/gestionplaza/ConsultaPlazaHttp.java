@@ -27,6 +27,19 @@ public class ConsultaPlazaHttp extends AsyncTask<Void,Void,JSONArray> {
     public static String resultado;
     JSONObject json = null;
 
+
+    public static String id = "";
+    public static String poblacion = "";
+    public static String tarifa = "";
+    public static String turnof = "";
+    public static String precio = "";
+    public static String precio60 = "";
+    public static String precio120 = "";
+
+
+
+
+
     GestionPlaza gp;
 
     Context mycontext;
@@ -45,7 +58,7 @@ public class ConsultaPlazaHttp extends AsyncTask<Void,Void,JSONArray> {
         JSONArray jsonAr=null;
 
         try{
-            url = new URL("http://quickpark.000webhostapp.com/php/consultaPlaza.php?plaza="+idplaza+"&turno="+turno);
+            url = new URL("http://25.103.185.238/quickpark/php/consultaPlaza.php?plaza="+idplaza+"&turno="+turno+"");
             HttpURLConnection urlConnection=(HttpURLConnection)url.openConnection();
 
             Log.d("consulta plaza URL",url.toString());
@@ -81,16 +94,13 @@ public class ConsultaPlazaHttp extends AsyncTask<Void,Void,JSONArray> {
     @Override
     protected void onPostExecute(JSONArray jsonArray) {
         super.onPostExecute(jsonArray);
-        String id = "";
-        String poblacion = "";
-        String tarifa = "";
-        String turnof = "";
-        String precio = "";
-        String precio60 = "";
-        String precio120 = "";
-
-
-
+        id = "";
+        poblacion = "";
+        tarifa = "";
+        turnof = "";
+        precio = "";
+        precio60 = "";
+        precio120 = "";
 
         try{
             for(int i=0;i<jsonArray.length();i++) {
@@ -102,11 +112,11 @@ public class ConsultaPlazaHttp extends AsyncTask<Void,Void,JSONArray> {
                 precio = jsonArray.getJSONObject(i).getString("precio");
                 precio60 = jsonArray.getJSONObject(i).getString("precio60");
                 precio120 = jsonArray.getJSONObject(i).getString("precio120");
-
             }
 
             gp = new GestionPlaza();
 
+            gp.tVcalle.setText(calle.toString());
             gp.tVidPlaza.setText("Estas en la plaza: "+id);
             gp.tvZona.setText(tarifa);
             gp.tvpreciomin.setText("0.2 €");
@@ -115,20 +125,22 @@ public class ConsultaPlazaHttp extends AsyncTask<Void,Void,JSONArray> {
             gp.tVPrecioMaximo.setText(precio + " €");
             gp.tVPoblacion2.setText(poblacion);
 
+            SelectorTiempo sp = new SelectorTiempo();
+
+            sp.preciomax = gp.tVPrecioMaximo.getText().toString();
+            sp.preciomin = gp.tvpreciomin.getText().toString();
+            sp.precioprimerahora = gp.tVPrimeraHora.getText().toString();
+            sp.preciosegundahora = gp.tVSegundaHora.getText().toString();
 
             switch (turnof){
                 case "M": gp.tvTurno.setText("Horario de Mañana - 08:00H a 14:00H");
                     break;
                 case "T": gp.tvTurno.setText("Horario de Tarde - 16:00H a 20:00H");
             }
-
-
-
-
-
         }
         catch(Exception ex)
         {
+
         }
     }
 }
