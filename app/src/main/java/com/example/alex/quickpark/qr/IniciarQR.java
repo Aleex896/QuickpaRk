@@ -73,6 +73,7 @@ public class IniciarQR extends AppCompatActivity {
                 textoqr = barcode.displayValue;
                 Intent gestionPlaza = new Intent(IniciarQR.this, GestionPlaza.class);
                 gestionPlaza.putExtra("textoqr",textoqr);
+                gestionPlaza.putExtra("user",user);
                 startActivity(gestionPlaza);
                 finish();
                 overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);

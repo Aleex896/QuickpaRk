@@ -50,36 +50,46 @@
 
         <activity
             android:name=".maps.MapsActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ajustesusuario.AjustesActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".qr.ScanActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ajustesusuario.AjustesUsActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ajustesusuario.ListaVehiculosActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ajustesusuario.AddCarActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".qr.IniciarQR"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".gestionplaza.GestionPlaza"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".gestionplaza.SelectorTiempo"
-            android:screenOrientation="portrait" />
-        <activity android:name=".monedero.MonederoActivity" />
-        <activity android:name=".pagos.RecargarActivity" />
-        <activity android:name=".splash.SplashScreenActivity" />
-        <activity android:name=".SelectCarActivity"></activity>
-        <activity android:name=".pagos.ConfirmacionActivity"></activity>
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".monedero.MonederoActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".pagos.RecargarActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".splash.SplashScreenActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".SelectCarActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".pagos.ConfirmacionActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

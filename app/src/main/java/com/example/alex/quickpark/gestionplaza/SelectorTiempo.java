@@ -27,6 +27,9 @@ public class SelectorTiempo extends AppCompatActivity{
     public static String precioprimerahora;
     public static String preciosegundahora;
 
+    private String user;
+    private String matricula;
+
     private RelativeLayout rtiket;
     private TextView hasta;
     private int totalFinal;
@@ -35,6 +38,9 @@ public class SelectorTiempo extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selector_tiempo);
+
+        matricula = getIntent().getStringExtra("matricula");
+        user = getIntent().getStringExtra("usuario");
 
         clock = (TextView) findViewById(R.id.tVClock);
         fecha = (TextView) findViewById(R.id.tVDate);

@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.alex.quickpark.R;
+import com.example.alex.quickpark.SelectCarActivity;
 import com.example.alex.quickpark.qr.IniciarQR;
 
 import java.util.Calendar;
@@ -21,6 +22,8 @@ public class GestionPlaza extends AppCompatActivity {
     private String turno;
     private Context context;
     public static String resultado;
+
+    public static String user;
 
     public static TextView tvZona;
     public static TextView tvpreciomin;
@@ -43,6 +46,9 @@ public class GestionPlaza extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestion_plaza);
 
+        textoqr = getIntent().getStringExtra("textoqr");
+        user = getIntent().getStringExtra("user");
+
         Button continuar = (Button)findViewById(R.id.bContinuar);
         tvZona = (TextView)findViewById(R.id.tVZona);
         tvpreciomin = (TextView)findViewById(R.id.tVPrecioMinimo2);
@@ -54,23 +60,18 @@ public class GestionPlaza extends AppCompatActivity {
         tvTurno = (TextView)findViewById(R.id.tVTurno);
         tVidPlaza = (TextView)findViewById(R.id.tVidplaza);
 
-
-
-
-
-
-
         continuar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goselectiempo = new Intent(GestionPlaza.this, SelectorTiempo.class);
-                startActivity(goselectiempo);
+                Intent goseleccar = new Intent(GestionPlaza.this, SelectCarActivity.class);
+                goseleccar.putExtra("user",user);
+                startActivity(goseleccar);
                 finish();
                 overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
             }
         });
 
-        textoqr = getIntent().getStringExtra("textoqr");
+
 
         idPlaza = textoqr.substring(0,6);
         calle = textoqr.substring(textoqr.lastIndexOf(";")+1);
@@ -87,10 +88,8 @@ public class GestionPlaza extends AppCompatActivity {
             turno = "T";
         }
 
-
         try {
             new ConsultaPlazaHttp(context,idPlaza,calle,turno).execute();
-            // TODO: PANTALLA DE CARGA
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -51,8 +51,6 @@ public class ListaVehiculosActivity extends AppCompatActivity implements Seriali
         trColor.setTypeface(myFont(this));
         trMatricula.setTypeface(myFont(this));
 
-
-
         btVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
