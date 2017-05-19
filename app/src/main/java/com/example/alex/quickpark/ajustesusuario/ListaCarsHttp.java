@@ -2,21 +2,14 @@ package com.example.alex.quickpark.ajustesusuario;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.alex.quickpark.R;
 
 import org.json.JSONArray;
 
