@@ -49,7 +49,7 @@ public class ListaCarsHttp extends AsyncTask<Void,Void,JSONArray> {
         try{
             String mail = ListaVehiculosActivity.user;
 
-            url = new URL("http://quickpark.000webhostapp.com/php/listaCars.php?mail="+mail);
+            url = new URL("http://25.103.185.238/quickpark/php/listaCars.php?mail="+mail);
             HttpURLConnection urlConnection=(HttpURLConnection)url.openConnection();
 
             Log.d("listCar",url.toString());

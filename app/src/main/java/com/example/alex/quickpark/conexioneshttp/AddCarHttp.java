@@ -41,7 +41,7 @@ public class AddCarHttp extends AsyncTask<Void,Void,String> {
             String matricula = AddCarActivity.matricula;
             String color = AddCarActivity.colorSelec;
 
-            url = new URL("http://quickpark.000webhostapp.com/php/addCar.php?mail="+mail+"&car="+matricula+"&color="+color);
+            url = new URL("http://25.103.185.238/quickpark/php/addCar.php?mail="+mail+"&car="+matricula+"&color="+color);
             HttpURLConnection urlConnection=(HttpURLConnection)url.openConnection();
 
             Log.d("addCar",url.toString());

@@ -41,7 +41,7 @@ public class UpdateHttp extends AsyncTask<Void,Void,String> {
             String apellido = AjustesUsActivity.apellido;
             String pass = AjustesUsActivity.pass;
 
-            url = new URL("http://quickpark.000webhostapp.com/php/updateUsuario.php?mail="+mail+"&name="+name+"&ape="+apellido+"&pasw="+pass);
+            url = new URL("http://25.103.185.238/quickpark/php/updateUsuario.php?mail="+mail+"&name="+name+"&ape="+apellido+"&pasw="+pass);
             HttpURLConnection urlConnection=(HttpURLConnection)url.openConnection();
 
             Log.d("registro",url.toString());
