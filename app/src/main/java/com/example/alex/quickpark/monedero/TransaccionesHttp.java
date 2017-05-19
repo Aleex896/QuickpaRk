@@ -1,18 +1,11 @@
 package com.example.alex.quickpark.monedero;
 
-import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.view.Gravity;
-import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.alex.quickpark.ajustesusuario.ListaVehiculosActivity;
+import com.example.alex.quickpark.pagos.RecargarActivity;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -25,20 +18,13 @@ import java.net.URL;
  * Created by JoseAntonio on 19/05/2017.
  */
 
-public class MonederoHttp extends AsyncTask<Void,Void,String> {
-
-    Context mycontext;
-
-    public MonederoHttp(Context xcontext){
-        mycontext = xcontext;
-    }
+public class TransaccionesHttp  extends AsyncTask<Void,Void,JSONArray> {
     @Override
-    protected String doInBackground(Void... voids) {
+    protected JSONArray doInBackground(Void... voids) {
+        JSONArray json = null;
         URL url;
-        String valor=null;
-
         try{
-            url = new URL("http://25.103.185.238/quickpark/php/consultaMonedero.php?user="+MonederoActivity.user);
+            url = new URL("http://25.103.185.238/quickpark/php/updateMonedero.php?user="+ RecargarActivity.user+"&amount="+RecargarActivity.amount+"&type=r");
             HttpURLConnection urlConnection=(HttpURLConnection)url.openConnection();
 
             Log.d("consulta plaza URL",url.toString());
@@ -61,30 +47,13 @@ public class MonederoHttp extends AsyncTask<Void,Void,String> {
                 Log.d("listCar", sb.toString());
                 urlConnection.disconnect();
 
-                valor = sb.toString();
+                json = new JSONArray(sb.toString());
 
             }
         }catch (Exception ex)
         {
             Log.d("errorR",ex.toString());
         }
-        return valor;
-    }
-
-    @Override
-    protected void onPostExecute(String saldo) {
-        super.onPostExecute(saldo);
-
-        try {
-            if(saldo!=null){
-                Log.d("monedero",saldo);
-                String valor = saldo.substring(1,saldo.length()-1);
-                MonederoActivity.tvSaldo.setText(valor+"€");
-            }else{
-                Log.d("monedero","Array vacio");
-            }
-        } catch (Exception ex){
-            Log.d("errorI",ex.toString());
-        }
+        return json;
     }
 }

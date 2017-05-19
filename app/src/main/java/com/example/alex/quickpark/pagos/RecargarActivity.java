@@ -32,6 +32,7 @@ import com.braintreepayments.api.models.PaymentMethodNonce;
 import com.example.alex.quickpark.R;
 import com.example.alex.quickpark.maps.MapsActivity;
 import com.example.alex.quickpark.monedero.MonederoActivity;
+import com.example.alex.quickpark.monedero.UpdateMonedero;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -46,7 +47,7 @@ public class RecargarActivity extends AppCompatActivity implements Serializable{
     final int REQUEST_CODE = 1;
     final String get_token = "http://quickpark.000webhostapp.com/braintreepayment/main.php";
     final String send_payment_details = "http://quickpark.000webhostapp.com/braintreepayment/mycheckout.php";
-    String token, amount,user;
+    public static String token, amount,user;
     HashMap<String, String> paramHash;
 
     Button bVolver,bPay;
@@ -133,6 +134,7 @@ public class RecargarActivity extends AppCompatActivity implements Serializable{
                         if(response.contains("Successful"))
                         {
                             Toast.makeText(RecargarActivity.this, "Transaction successful", Toast.LENGTH_LONG).show();
+                            new UpdateMonedero().execute();
                             Intent goconfirm = new Intent(RecargarActivity.this, ConfirmacionActivity.class);
                             goconfirm.putExtra("user",user);
                             startActivity(goconfirm);

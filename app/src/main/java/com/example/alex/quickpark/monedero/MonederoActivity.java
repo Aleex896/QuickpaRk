@@ -30,6 +30,8 @@ public class MonederoActivity extends AppCompatActivity implements Serializable 
         user =getIntent().getStringExtra("user");
         tvSaldo = (TextView)findViewById(R.id.tvSaldo);
 
+        new MonederoHttp(this).execute();
+
         btRecargar = (Button)findViewById(R.id.btRecargar);
         bVolver = (Button)findViewById(R.id.botonAtras);
 
