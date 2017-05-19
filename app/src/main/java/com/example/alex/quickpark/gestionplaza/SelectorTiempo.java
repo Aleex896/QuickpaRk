@@ -71,7 +71,7 @@ public class SelectorTiempo extends AppCompatActivity{
                         {
                             if(comprovarHorario(selectedHour,selectedMinute,hour, minute))
                             {
-                                Toast.makeText(SelectorTiempo.this, "Hora seleccionada correctamente", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(SelectorTiempo.this, "Hora seleccionada correctamente", Toast.LENGTH_SHORT).show();
                                 if(selectedMinute<10)
                                 {
                                     tiempousuario.setVisibility(View.VISIBLE);
@@ -123,32 +123,40 @@ public class SelectorTiempo extends AppCompatActivity{
 
     private boolean validarHora(int selectedHour, int selectedMinute, int hour, int minute)
     {
-        if(selectedHour<hour)
-        {
-            Toast.makeText(SelectorTiempo.this, "Lo siento, la hora seleccionada es anterior a la actual", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        else
-        {
-            if(selectedHour==hour && selectedMinute<minute)
+            if(selectedHour<hour)
             {
                 Toast.makeText(SelectorTiempo.this, "Lo siento, la hora seleccionada es anterior a la actual", Toast.LENGTH_SHORT).show();
                 return false;
             }
             else
             {
-                totalFinal = mas2horas(selectedHour, hour,selectedMinute,minute);
-                if(totalFinal>120)
+                if(selectedHour==hour && selectedMinute<minute)
                 {
-                    Toast.makeText(SelectorTiempo.this, "Lo siento, no se pueden superar las 2 horas", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SelectorTiempo.this, "Lo siento, la hora seleccionada es anterior a la actual", Toast.LENGTH_SHORT).show();
                     return false;
                 }
                 else
                 {
-                    return true;
+                    totalFinal = mas2horas(selectedHour, hour,selectedMinute,minute);
+                    if(totalFinal>120)
+                    {
+                        Toast.makeText(SelectorTiempo.this, "Lo siento, no se pueden superar las 2 horas", Toast.LENGTH_SHORT).show();
+                        return false;
+                    }
+                    else
+                    {
+                        if(totalFinal<10)
+                        {
+                            Toast.makeText(SelectorTiempo.this, "Lo siento, el tiempo minimo son 10 minutos", Toast.LENGTH_SHORT).show();
+                            return false;
+                        }
+                        else
+                        {
+                            return true;
+                        }
+                    }
                 }
             }
-        }
     }
 
     private int mas2horas(int selectedHour, int hour, int selectedMinute, int minute){
@@ -248,16 +256,36 @@ public class SelectorTiempo extends AppCompatActivity{
 
         TextView tvFtiempo = (TextView)findViewById(R.id.tVFtiempo);
         TextView tvFtarifa = (TextView)findViewById(R.id.tVFtarifa);
+        TextView tvFTotal = (TextView)findViewById(R.id.tVFtotal);
 
         int horasOcu;
         int minutosOcu;
+        float preciousuario;
+        float pprimera;
+        float psegunda;
+
+        pprimera = Float.parseFloat(precioprimerahora);
+        psegunda = Float.parseFloat(preciosegundahora);
 
         horasOcu = totalFinal;
-        tvFtiempo.setText(""+horasOcu);
+        tvFtiempo.setText(""+horasOcu+" min");
 
+        if(horasOcu<=60)
+        {
 
+            tvFtarifa.setText("1.8€");
+            preciousuario= horasOcu * pprimera;
+            preciousuario = preciousuario/60;
+        }
+        else
+        {
+            tvFtarifa.setText("1.95€");
+            preciousuario= horasOcu * psegunda;
+            preciousuario = preciousuario/120;
+        }
 
-
+        String.format("%.2f", preciousuario);
+        tvFTotal.setText(""+preciousuario+"€");
     }
 
 

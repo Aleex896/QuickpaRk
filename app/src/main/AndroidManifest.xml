@@ -77,7 +77,8 @@
             android:screenOrientation="portrait" />
         <activity android:name=".monedero.MonederoActivity" />
         <activity android:name=".pagos.RecargarActivity" />
-        <activity android:name=".splash.SplashScreenActivity"></activity>
+        <activity android:name=".splash.SplashScreenActivity" />
+        <activity android:name=".SelectCarActivity"></activity>
     </application>
 
 </manifest>
