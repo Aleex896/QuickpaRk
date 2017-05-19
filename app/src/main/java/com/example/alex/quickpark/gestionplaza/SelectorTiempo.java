@@ -243,9 +243,8 @@ public class SelectorTiempo extends AppCompatActivity{
         }
     }
 
-    private void calculartarifa(int selectedHour, int selectedMinute, int hour, int minute, String preciomin, String preciomax, String precioprimerahora, String preciosegundahora){
-
-
+    private void calculartarifa(int selectedHour, int selectedMinute, int hour, int minute, String preciomin, String preciomax, String precioprimerahora, String preciosegundahora)
+    {
 
         TextView tvFtiempo = (TextView)findViewById(R.id.tVFtiempo);
         TextView tvFtarifa = (TextView)findViewById(R.id.tVFtarifa);
@@ -253,9 +252,7 @@ public class SelectorTiempo extends AppCompatActivity{
         int horasOcu;
         int minutosOcu;
 
-
         horasOcu = totalFinal;
-
         tvFtiempo.setText(""+horasOcu);
 
 
