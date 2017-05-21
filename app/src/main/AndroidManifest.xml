@@ -29,6 +29,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".inicioregistro.RegistroActivity"
@@ -50,46 +51,52 @@
 
         <activity
             android:name=".maps.MapsActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ajustesusuario.AjustesActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".qr.ScanActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ajustesusuario.AjustesUsActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ajustesusuario.ListaVehiculosActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ajustesusuario.AddCarActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".qr.IniciarQR"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".gestionplaza.GestionPlaza"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".gestionplaza.SelectorTiempo"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" >
 
-        <activity android:name=".monedero.MonederoActivity"
-            android:screenOrientation="portrait"/>
+        </activity>
+        <activity
+            android:name=".monedero.MonederoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pagos.RecargarActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".splash.SplashScreenActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SelectCarActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pagos.ConfirmacionActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".pagos.ResumenPago"
+            android:screenOrientation="portrait">
 
-        <activity android:name=".pagos.RecargarActivity"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name=".splash.SplashScreenActivity"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name=".SelectCarActivity"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name=".pagos.ConfirmacionActivity"
-            android:screenOrientation="portrait"/>
+        </activity>
     </application>
 
 </manifest>

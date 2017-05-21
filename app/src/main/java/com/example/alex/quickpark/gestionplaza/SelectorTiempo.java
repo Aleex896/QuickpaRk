@@ -1,7 +1,11 @@
 package com.example.alex.quickpark.gestionplaza;
 
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +23,7 @@ public class SelectorTiempo extends AppCompatActivity{
     private String textoqr;
     TextView clock;
     TextView fecha;
-    Button btiempo;
+    Button btiempo,btpagar;
     TextView tiempousuario;
 
     public static String preciomin;
@@ -27,7 +31,7 @@ public class SelectorTiempo extends AppCompatActivity{
     public static String precioprimerahora;
     public static String preciosegundahora;
 
-    private String user;
+    public static String user;
     private String matricula;
 
     private RelativeLayout rtiket;
@@ -45,6 +49,7 @@ public class SelectorTiempo extends AppCompatActivity{
         clock = (TextView) findViewById(R.id.tVClock);
         fecha = (TextView) findViewById(R.id.tVDate);
         btiempo = (Button) findViewById(R.id.bSelecTime);
+        btpagar = (Button)findViewById(R.id.btPagar);
 
         TextView test = (TextView)findViewById(R.id.test);
         hasta = (TextView)findViewById(R.id.tVPuedesAparcar);
@@ -100,6 +105,13 @@ public class SelectorTiempo extends AppCompatActivity{
                 }, hour, minute, true);//Yes 24 hour time
                 mTimePicker.setTitle("¿ Hasta que hora quieres aparcar ?");
                 mTimePicker.show();
+            }
+        });
+
+        btpagar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 
@@ -304,4 +316,6 @@ public class SelectorTiempo extends AppCompatActivity{
         String date = "dd-MM-yyyy"; // 01 January 2013
         fecha.setText(android.text.format.DateFormat.format(date, noteTS));
     }
+
+
 }

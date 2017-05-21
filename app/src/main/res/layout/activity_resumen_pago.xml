@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:background="@color/Azul"
+    tools:context="com.example.alex.quickpark.pagos.ConfirmacionActivity">
+
+
+
+    <ImageView
+        android:id="@+id/iVConfirm"
+        android:layout_marginTop="20dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/confirm"/>
+    <TextView
+        android:id="@+id/tVRcorrecto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iVConfirm"
+        android:textSize="35dp"
+        android:textAlignment="center"
+        android:text="Pago Realizado Correctamente"/>
+
+    <RelativeLayout
+        android:id="@+id/rlResumen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="15dp"
+        android:layout_below="@id/tVRcorrecto"
+        android:background="@color/grisoscuro">
+
+        <TextView
+            android:id="@+id/tvResumen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:layout_centerHorizontal="true"
+            android:text="Resumen del Pago"/>
+        <TextView
+            android:id="@+id/tvRPob"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:textSize="18dp"
+            android:text="Poblacion: "
+            android:layout_below="@id/tvResumen"/>
+        <TextView
+            android:id="@+id/tvRcalle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:textSize="18dp"
+            android:text="Calle: "
+            android:layout_below="@id/tvRPob"/>
+        <TextView
+            android:id="@+id/tvRTiempo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:textSize="18dp"
+            android:text="Tiempo: "
+            android:layout_below="@id/tvRcalle"/>
+
+        <TextView
+            android:id="@+id/tvRPrecio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:textSize="18dp"
+            android:text="Precio: "
+            android:layout_below="@id/tvRTiempo"/>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btVMenu"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:background="@color/grisclaro"
+        android:textColor="@color/blanco"
+        android:text="Volver al Menu"
+        android:layout_marginTop="35dp"
+        android:layout_below="@+id/rlResumen"
+        android:layout_centerInParent="true"/>
+
+</RelativeLayout>

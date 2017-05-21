@@ -1,11 +1,15 @@
 package com.example.alex.quickpark.monedero;
 
 import android.content.Intent;
+import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.ButtonBarLayout;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TableLayout;
 import android.widget.TextView;
 
 import com.example.alex.quickpark.R;
@@ -20,6 +24,8 @@ public class MonederoActivity extends AppCompatActivity implements Serializable 
     Button btRecargar,bVolver;
     public static String user;
     public static TextView tvSaldo;
+    public static ScrollView llListado;
+    public static TableLayout table;
 
 
     @Override
@@ -29,8 +35,11 @@ public class MonederoActivity extends AppCompatActivity implements Serializable 
 
         user =getIntent().getStringExtra("user");
         tvSaldo = (TextView)findViewById(R.id.tvSaldo);
+        llListado = (ScrollView)findViewById(R.id.svlistado);
+        table = (TableLayout)findViewById(R.id.tablelayout);
 
         new MonederoHttp(this).execute();
+        new TransaccionesHttp(this).execute();
 
         btRecargar = (Button)findViewById(R.id.btRecargar);
         bVolver = (Button)findViewById(R.id.botonAtras);

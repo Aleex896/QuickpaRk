@@ -40,8 +40,8 @@ import java.util.Map;
 public class PagoActivity extends AppCompatActivity {
 
     final int REQUEST_CODE = 1;
-    final String get_token = "http://quickpark.000webhostapp.com/braintreepayment/main.php";
-    final String send_payment_details = "http://quickpark.000webhostapp.com/braintreepayment/mycheckout.php";
+    final String get_token = "http://25.103.185.238/quickpark/braintreepayment/main.php";
+    final String send_payment_details = "http://25.103.185.238/quickpark/braintreepayment/mycheckout.php";
     String token, amount,user;
     HashMap<String, String> paramHash;
 

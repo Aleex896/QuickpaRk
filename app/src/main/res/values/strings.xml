@@ -10,4 +10,9 @@
     </string-array>
     <string name="app_name">Quickpark</string>
     <string name="title_activity_maps">Map</string>
+
+    <string-array name="pagos">
+        <item>Monedero</item>
+        <item>PayPal / Tarjeta credito</item>
+    </string-array>
 </resources>
