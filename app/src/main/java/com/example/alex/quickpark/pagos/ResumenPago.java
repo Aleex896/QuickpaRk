@@ -40,13 +40,12 @@ public class ResumenPago extends AppCompatActivity implements Serializable{
         bVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*Intent goajustes = new Intent(ResumenPago.this, AjustesActivity.class);
-                //goajustes.putExtra("user",user);
+                Intent goajustes = new Intent(ResumenPago.this, AjustesActivity.class);
+                goajustes.putExtra("user",user);
                 startActivity(goajustes);
                 finish();
-                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);*/
-                DialogFragment dlgF = new PagoDialogFragment();
-                dlgF.show(getFragmentManager(),"Test");
+                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+
             }
         });
     }
@@ -55,35 +54,6 @@ public class ResumenPago extends AppCompatActivity implements Serializable{
     public static Typeface myFont(Context context) {
         return Typeface.createFromAsset(context.getAssets(), "fonts/Walkway SemiBold.ttf");
     }
-
-    public static class PagoDialogFragment extends DialogFragment {
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            // Use the Builder class for convenient dialog construction
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder
-                    .setTitle("Modo de Pago")
-                    .setItems(items, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            switch (which){
-                                case 0:
-                                    Toast.makeText(getActivity(),"Monedero", Toast.LENGTH_SHORT).show();
-                                    new PagoMonederoHttp(context).execute();
-                                    break;
-                                case 1:
-                                    Toast.makeText(getActivity(),"PayPal", Toast.LENGTH_SHORT).show();
-                                    break;
-
-                            }
-                        }
-                    })
-                    ;
-
-            // Create the AlertDialog object and return it
-            return builder.create();
-        }
-    }
-
 
 
 }

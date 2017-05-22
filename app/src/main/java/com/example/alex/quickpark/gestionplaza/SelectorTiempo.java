@@ -1,12 +1,19 @@
 package com.example.alex.quickpark.gestionplaza;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Typeface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -14,11 +21,38 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.braintreepayments.api.dropin.DropInActivity;
+import com.braintreepayments.api.dropin.DropInRequest;
+import com.braintreepayments.api.dropin.DropInResult;
+import com.braintreepayments.api.interfaces.HttpResponseCallback;
+import com.braintreepayments.api.internal.HttpClient;
+import com.braintreepayments.api.models.PaymentMethodNonce;
 import com.example.alex.quickpark.R;
+import com.example.alex.quickpark.maps.MapsActivity;
+import com.example.alex.quickpark.monedero.UpdateMonedero;
+import com.example.alex.quickpark.pagos.ConfirmacionActivity;
+import com.example.alex.quickpark.pagos.PagoMonederoHttp;
+import com.example.alex.quickpark.pagos.RecargarActivity;
+import com.example.alex.quickpark.pagos.ResumenPago;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
-public class SelectorTiempo extends AppCompatActivity{
+public  class SelectorTiempo extends AppCompatActivity{
+
+    static final int REQUEST_CODE = 1;
+    final String get_token = "http://quickpark.000webhostapp.com/braintreepayment/main.php";
+    final String send_payment_details = "http://quickpark.000webhostapp.com/braintreepayment/mycheckout.php";
+    public static String token, amount;
+    HashMap<String, String> paramHash;
 
     private String textoqr;
     TextView clock;
@@ -30,8 +64,10 @@ public class SelectorTiempo extends AppCompatActivity{
     public static String preciomax;
     public static String precioprimerahora;
     public static String preciosegundahora;
+    static Context context;
 
     public static String user;
+    static CharSequence[] items={"Monedero","PayPal / CreditCard"};
     private String matricula;
 
     private RelativeLayout rtiket;
@@ -50,6 +86,8 @@ public class SelectorTiempo extends AppCompatActivity{
         fecha = (TextView) findViewById(R.id.tVDate);
         btiempo = (Button) findViewById(R.id.bSelecTime);
         btpagar = (Button)findViewById(R.id.btPagar);
+
+        context = getApplicationContext();
 
         TextView test = (TextView)findViewById(R.id.test);
         hasta = (TextView)findViewById(R.id.tVPuedesAparcar);
@@ -111,7 +149,8 @@ public class SelectorTiempo extends AppCompatActivity{
         btpagar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                DialogFragment dlgF = new PagoDialogFragment();
+                dlgF.show(getFragmentManager(),"Test");
             }
         });
 
@@ -304,6 +343,7 @@ public class SelectorTiempo extends AppCompatActivity{
 
         String.format("%.2f", preciousuario);
         tvFTotal.setText(""+preciousuario+"€");
+        amount = tvFTotal.getText().toString();
     }
 
 
@@ -315,6 +355,184 @@ public class SelectorTiempo extends AppCompatActivity{
 
         String date = "dd-MM-yyyy"; // 01 January 2013
         fecha.setText(android.text.format.DateFormat.format(date, noteTS));
+    }
+
+    public static class PagoDialogFragment extends DialogFragment {
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+            // Use the Builder class for convenient dialog construction
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder
+                    .setTitle("Modo de Pago")
+                    .setItems(items, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            switch (which){
+                                case 0:
+                                    Toast.makeText(getActivity(),"Monedero", Toast.LENGTH_SHORT).show();
+                                    new PagoMonederoHttp(context).execute();
+                                    break;
+                                case 1:
+                                    Toast.makeText(getActivity(),"PayPal", Toast.LENGTH_SHORT).show();
+                                    DropInRequest dropInRequest = new DropInRequest()
+                                            .clientToken(token);
+                                    startActivityForResult(dropInRequest.getIntent(context), REQUEST_CODE);
+                                    break;
+
+                            }
+                        }
+                    })
+            ;
+
+            // Create the AlertDialog object and return it
+            return builder.create();
+        }
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE) {
+            if (resultCode == Activity.RESULT_OK) {
+                DropInResult result = data.getParcelableExtra(DropInResult.EXTRA_DROP_IN_RESULT);
+                PaymentMethodNonce nonce = result.getPaymentMethodNonce();
+                String stringNonce = nonce.getNonce();
+                Log.d("mylog", "Result: " + stringNonce);
+                // Send payment price with the nonce
+                // use the result to update your UI and send the payment method nonce to your server
+                if (amount.isEmpty()) {
+                    paramHash = new HashMap<>();
+                    paramHash.put("amount", amount);
+                    paramHash.put("nonce", stringNonce);
+                    paramHash.put("user",user);
+                    sendPaymentDetails();
+                } else
+                    Toast.makeText(SelectorTiempo.this, "Please enter a valid amount.", Toast.LENGTH_SHORT).show();
+
+            } else if (resultCode == Activity.RESULT_CANCELED) {
+                // the user canceled
+                Log.d("mylog", "user canceled");
+            } else {
+                // handle errors here, an exception may be available in
+                Exception error = (Exception) data.getSerializableExtra(DropInActivity.EXTRA_ERROR);
+                Log.d("mylog", "Error : " + error.toString());
+            }
+        }
+    }
+
+    public void onBraintreeSubmit() {
+
+    }
+
+    private void sendPaymentDetails() {
+        RequestQueue queue = Volley.newRequestQueue(SelectorTiempo.this);
+        // Request a string response from the provided URL.
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, send_payment_details,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if(response.contains("Successful"))
+                        {
+                            Toast.makeText(SelectorTiempo.this, "Transaction successful", Toast.LENGTH_LONG).show();
+                            //new UpdateMonedero().execute();
+                            Intent goconfirm = new Intent(SelectorTiempo.this, ConfirmacionActivity.class);
+                            goconfirm.putExtra("user",user);
+                            startActivity(goconfirm);
+                            finish();
+                            overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+                        }
+                        else Toast.makeText(SelectorTiempo.this, "Transaction failed", Toast.LENGTH_LONG).show();
+                        Log.d("mylog", "Final Response: " + response.toString());
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("mylog", "Volley error : " + error.toString());
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+                if (paramHash == null)
+                    return null;
+                Map<String, String> params = new HashMap<>();
+                for (String key : paramHash.keySet()) {
+                    params.put(key, paramHash.get(key));
+                    Log.d("mylog", "Key : " + key + " Value : " + paramHash.get(key));
+                }
+
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("Content-Type", "application/x-www-form-urlencoded");
+                return params;
+            }
+        };
+        queue.add(stringRequest);
+    }
+
+    public static Typeface myFont(Context context) {
+        return Typeface.createFromAsset(context.getAssets(), "fonts/Walkway SemiBold.ttf");
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent goregistro = new Intent(SelectorTiempo.this, MapsActivity.class);
+        startActivity(goregistro);
+        finish();
+        overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+    }
+
+    private class HttpRequest extends AsyncTask {
+        ProgressDialog progress;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progress = new ProgressDialog(SelectorTiempo.this, android.R.style.Theme_DeviceDefault_Dialog);
+            progress.setCancelable(false);
+            progress.setMessage("We are contacting our servers for token, Please wait");
+            progress.setTitle("Getting token");
+            progress.show();
+        }
+
+        @Override
+        protected Object doInBackground(Object[] objects) {
+            HttpClient client = new HttpClient();
+            client.get(get_token, new HttpResponseCallback() {
+                @Override
+                public void success(String responseBody) {
+                    Log.d("mylog", responseBody);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(SelectorTiempo.this, "Successfully got token", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    token = responseBody;
+                }
+
+                @Override
+                public void failure(Exception exception) {
+                    final Exception ex = exception;
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(SelectorTiempo.this, "Failed to get token: " + ex.toString(), Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
+            });
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Object o) {
+            super.onPostExecute(o);
+            progress.dismiss();
+        }
     }
 
 

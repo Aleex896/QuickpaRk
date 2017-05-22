@@ -35,7 +35,7 @@ public class PagoMonederoHttp extends AsyncTask<Void,Void,String> {
         String res= null;
         URL url;
         try{
-            url = new URL("http://25.103.185.238/quickpark/php/pagoMonedero.php?user="+ SelectorTiempo.user+"&amount=0");
+            url = new URL("http://25.103.185.238/quickpark/php/pagoMonedero.php?user="+ SelectorTiempo.user+"&amount="+SelectorTiempo.amount);
             HttpURLConnection urlConnection=(HttpURLConnection)url.openConnection();
 
             Log.d("pagoM URL",url.toString());
