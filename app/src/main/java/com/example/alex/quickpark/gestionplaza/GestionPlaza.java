@@ -65,6 +65,7 @@ public class GestionPlaza extends AppCompatActivity {
             public void onClick(View v) {
                 Intent goseleccar = new Intent(GestionPlaza.this, SelectCarActivity.class);
                 goseleccar.putExtra("user",user);
+                goseleccar.putExtra("plaza",idPlaza);
                 startActivity(goseleccar);
                 finish();
                 overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
@@ -73,7 +74,7 @@ public class GestionPlaza extends AppCompatActivity {
 
 
 
-        idPlaza = textoqr.substring(0,6);
+        idPlaza = textoqr.substring(0,15);
         calle = textoqr.substring(textoqr.lastIndexOf(";")+1);
 
         Calendar c = Calendar.getInstance();
@@ -100,6 +101,7 @@ public class GestionPlaza extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent goregistro = new Intent(GestionPlaza.this, IniciarQR.class);
+        goregistro.putExtra("user",user);
         startActivity(goregistro);
         finish();
         overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);

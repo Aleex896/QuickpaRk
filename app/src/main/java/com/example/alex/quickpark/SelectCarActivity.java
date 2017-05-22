@@ -12,7 +12,7 @@ import java.io.Serializable;
 
 public class SelectCarActivity extends AppCompatActivity implements Serializable {
 
-    public static String user;
+    public static String user,plaza;
     public static LinearLayout llListado;
     public static TableLayout table;
     Context context;
@@ -23,6 +23,7 @@ public class SelectCarActivity extends AppCompatActivity implements Serializable
         setContentView(R.layout.activity_select_car);
 
         user = getIntent().getStringExtra("user");
+        plaza = getIntent().getStringExtra("plaza");
         llListado = (LinearLayout) findViewById(R.id.llListado);
         table = (TableLayout) findViewById(R.id.tablelayout);
 

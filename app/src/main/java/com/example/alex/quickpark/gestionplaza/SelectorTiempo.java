@@ -35,6 +35,7 @@ import com.braintreepayments.api.interfaces.HttpResponseCallback;
 import com.braintreepayments.api.internal.HttpClient;
 import com.braintreepayments.api.models.PaymentMethodNonce;
 import com.example.alex.quickpark.R;
+import com.example.alex.quickpark.conexioneshttp.VehiculoPlazaHttp;
 import com.example.alex.quickpark.maps.MapsActivity;
 import com.example.alex.quickpark.monedero.UpdateMonedero;
 import com.example.alex.quickpark.pagos.ConfirmacionActivity;
@@ -46,7 +47,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-public  class SelectorTiempo extends AppCompatActivity{
+public class SelectorTiempo extends AppCompatActivity{
 
     static final int REQUEST_CODE = 1;
     final String get_token = "http://quickpark.000webhostapp.com/braintreepayment/main.php";
@@ -65,10 +66,12 @@ public  class SelectorTiempo extends AppCompatActivity{
     public static String precioprimerahora;
     public static String preciosegundahora;
     static Context context;
+    static Activity activity;
 
-    public static String user;
+    public static String user,plaza,tiempo;
     static CharSequence[] items={"Monedero","PayPal / CreditCard"};
-    private String matricula;
+    public static String matricula;
+
 
     private RelativeLayout rtiket;
     private TextView hasta;
@@ -80,7 +83,9 @@ public  class SelectorTiempo extends AppCompatActivity{
         setContentView(R.layout.activity_selector_tiempo);
 
         matricula = getIntent().getStringExtra("matricula");
-        user = getIntent().getStringExtra("usuario");
+        user = getIntent().getStringExtra("user");
+        plaza = getIntent().getStringExtra("plaza");
+
 
         clock = (TextView) findViewById(R.id.tVClock);
         fecha = (TextView) findViewById(R.id.tVDate);
@@ -88,6 +93,8 @@ public  class SelectorTiempo extends AppCompatActivity{
         btpagar = (Button)findViewById(R.id.btPagar);
 
         context = getApplicationContext();
+        activity = SelectorTiempo.this;
+        new HttpRequest().execute();
 
         TextView test = (TextView)findViewById(R.id.test);
         hasta = (TextView)findViewById(R.id.tVPuedesAparcar);
@@ -135,6 +142,7 @@ public  class SelectorTiempo extends AppCompatActivity{
                                     hasta.setVisibility(View.VISIBLE);
                                     rtiket.setVisibility(View.VISIBLE);
                                     tiempousuario.setText(selectedHour + ":" + selectedMinute);
+                                    tiempo = selectedHour +":"+selectedMinute;
                                     calculartarifa(selectedHour,selectedMinute,hour, minute, preciomin, preciomax, precioprimerahora, preciosegundahora);
                                 }
                             }
@@ -149,8 +157,26 @@ public  class SelectorTiempo extends AppCompatActivity{
         btpagar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DialogFragment dlgF = new PagoDialogFragment();
-                dlgF.show(getFragmentManager(),"Test");
+                AlertDialog.Builder builder = new AlertDialog.Builder(SelectorTiempo.this);
+                builder
+                        .setTitle("Modo de Pago")
+                        .setItems(items, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                switch (which){
+                                    case 0:
+                                        //Toast.makeText(getActivity(),"Monedero", Toast.LENGTH_SHORT).show();
+                                        new PagoMonederoHttp(context,activity).execute();
+                                        break;
+                                    case 1:
+                                        onBraintreeSubmit();
+                                        //Toast.makeText(getActivity(),"PayPal", Toast.LENGTH_SHORT).show();
+                                        break;
+
+                                }
+                            }
+                        });
+                Dialog dlgF = builder.create();
+                dlgF.show();
             }
         });
 
@@ -343,7 +369,7 @@ public  class SelectorTiempo extends AppCompatActivity{
 
         String.format("%.2f", preciousuario);
         tvFTotal.setText(""+preciousuario+"€");
-        amount = tvFTotal.getText().toString();
+        amount = String.valueOf(preciousuario);
     }
 
 
@@ -370,7 +396,7 @@ public  class SelectorTiempo extends AppCompatActivity{
                             switch (which){
                                 case 0:
                                     Toast.makeText(getActivity(),"Monedero", Toast.LENGTH_SHORT).show();
-                                    new PagoMonederoHttp(context).execute();
+                                    new PagoMonederoHttp(context,activity).execute();
                                     break;
                                 case 1:
                                     Toast.makeText(getActivity(),"PayPal", Toast.LENGTH_SHORT).show();
@@ -397,10 +423,12 @@ public  class SelectorTiempo extends AppCompatActivity{
                 DropInResult result = data.getParcelableExtra(DropInResult.EXTRA_DROP_IN_RESULT);
                 PaymentMethodNonce nonce = result.getPaymentMethodNonce();
                 String stringNonce = nonce.getNonce();
+                Log.d("mylog",amount);
                 Log.d("mylog", "Result: " + stringNonce);
+
                 // Send payment price with the nonce
                 // use the result to update your UI and send the payment method nonce to your server
-                if (amount.isEmpty()) {
+                if (amount!=null) {
                     paramHash = new HashMap<>();
                     paramHash.put("amount", amount);
                     paramHash.put("nonce", stringNonce);
@@ -421,7 +449,9 @@ public  class SelectorTiempo extends AppCompatActivity{
     }
 
     public void onBraintreeSubmit() {
-
+        DropInRequest dropInRequest = new DropInRequest()
+                .clientToken(token);
+        startActivityForResult(dropInRequest.getIntent(context), REQUEST_CODE);
     }
 
     private void sendPaymentDetails() {
@@ -434,7 +464,7 @@ public  class SelectorTiempo extends AppCompatActivity{
                         if(response.contains("Successful"))
                         {
                             Toast.makeText(SelectorTiempo.this, "Transaction successful", Toast.LENGTH_LONG).show();
-                            //new UpdateMonedero().execute();
+                            new VehiculoPlazaHttp(context,activity).execute();
                             Intent goconfirm = new Intent(SelectorTiempo.this, ConfirmacionActivity.class);
                             goconfirm.putExtra("user",user);
                             startActivity(goconfirm);

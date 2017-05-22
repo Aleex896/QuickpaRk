@@ -37,6 +37,7 @@ public class SelectCarHttp extends AsyncTask<Void,Void,JSONArray> {
     private Context mycontext;
     private Activity myActivity;
     private String mail;
+    private String plaza;
 
     public SelectCarHttp(Context context, Activity activity){
         mycontext = context;
@@ -49,7 +50,8 @@ public class SelectCarHttp extends AsyncTask<Void,Void,JSONArray> {
         JSONArray jsonAr=null;
 
         try{
-            mail = GestionPlaza.user;
+            mail = SelectCarActivity.user;
+            plaza = SelectCarActivity.plaza;
             Log.d("usuario",mail);
 
             url = new URL("http://25.103.185.238/quickpark/php/listaCars.php?mail="+mail);
@@ -128,8 +130,9 @@ public class SelectCarHttp extends AsyncTask<Void,Void,JSONArray> {
                                 radio.setChecked(false);
                             }
                             Intent goselecttiempo = new Intent(myActivity, SelectorTiempo.class);
-                            goselecttiempo.putExtra(matricula,"matricula");
-                            goselecttiempo.putExtra(mail,"usuario");
+                            goselecttiempo.putExtra("matricula",matricula);
+                            goselecttiempo.putExtra("user",mail);
+                            goselecttiempo.putExtra("plaza",plaza);
                             myActivity.startActivity(goselecttiempo);
                         }
                     });

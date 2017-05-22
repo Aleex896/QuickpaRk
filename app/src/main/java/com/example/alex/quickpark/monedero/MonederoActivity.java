@@ -38,8 +38,6 @@ public class MonederoActivity extends AppCompatActivity implements Serializable 
         llListado = (ScrollView)findViewById(R.id.svlistado);
         table = (TableLayout)findViewById(R.id.tablelayout);
 
-        new MonederoHttp(this).execute();
-        new TransaccionesHttp(this).execute();
 
         btRecargar = (Button)findViewById(R.id.btRecargar);
         bVolver = (Button)findViewById(R.id.botonAtras);
@@ -65,6 +63,9 @@ public class MonederoActivity extends AppCompatActivity implements Serializable 
                 overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
             }
         });
+
+        new MonederoHttp(this).execute();
+        new TransaccionesHttp(this).execute();
     }
 
 

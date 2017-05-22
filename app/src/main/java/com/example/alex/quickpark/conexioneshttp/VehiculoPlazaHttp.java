@@ -1,4 +1,4 @@
-package com.example.alex.quickpark.pagos;
+package com.example.alex.quickpark.conexioneshttp;
 
 import android.app.Activity;
 import android.content.Context;
@@ -7,11 +7,10 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.alex.quickpark.conexioneshttp.VehiculoPlazaHttp;
+import com.example.alex.quickpark.SelectCarActivity;
 import com.example.alex.quickpark.gestionplaza.SelectorTiempo;
-import com.example.alex.quickpark.monedero.MonederoActivity;
-
-import org.json.JSONArray;
+import com.example.alex.quickpark.pagos.ConfirmacionActivity;
+import com.example.alex.quickpark.pagos.ResumenPago;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -21,26 +20,24 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * Created by Jose Antonio Picazos on 21/05/2017.
+ * Created by JoseAntonio on 22/05/2017.
  */
 
-public class PagoMonederoHttp extends AsyncTask<Void,Void,String> {
+public class VehiculoPlazaHttp extends AsyncTask<Void,Void,String> {
 
     Context mycontext;
     Activity myactivity;
 
-    public PagoMonederoHttp (Context xcontext, Activity xactivity){
+    public VehiculoPlazaHttp(Context xcontext, Activity xactivity){
         mycontext = xcontext;
         myactivity = xactivity;
-
     }
-
     @Override
-    protected String doInBackground(Void... params) {
+    protected String doInBackground(Void... voids) {
         String res= null;
         URL url;
         try{
-            url = new URL("http://25.103.185.238/quickpark/php/pagoMonedero.php?user="+ SelectorTiempo.user+"&amount="+SelectorTiempo.amount);
+            url = new URL("http://25.103.185.238/quickpark/php/insertVehiculoPlaza.php?matricula="+ SelectorTiempo.matricula+"&plaza="+SelectorTiempo.plaza+"&tiempo="+ SelectorTiempo.tiempo +"&amount="+SelectorTiempo.amount +"&user="+SelectorTiempo.user);
             HttpURLConnection urlConnection=(HttpURLConnection)url.openConnection();
 
             Log.d("pagoM URL",url.toString());
@@ -79,18 +76,12 @@ public class PagoMonederoHttp extends AsyncTask<Void,Void,String> {
             String resultado = string;
 
             switch (resultado){
-                case "1": Toast.makeText(mycontext,"Monedero", Toast.LENGTH_SHORT).show();
-                    Log.d("pagoM","Error Sevidor");
+                case "1":Log.d("pagoM","Error Sevidor");
                     break;
-                case "2": Toast.makeText(mycontext,"Saldo del Monedero 0€", Toast.LENGTH_SHORT).show();
-                    Log.d("pagoM","Saldo 0€");
-                    break;
-                case "3": Toast.makeText(mycontext,"No tienes suficiente saldo", Toast.LENGTH_SHORT).show();
-                    Log.d("pagoM","Saldo Insuficiente");
-                    break;
-                case "4": Toast.makeText(mycontext,"Pago Correcto", Toast.LENGTH_SHORT).show();
-                    Log.d("pagoM","Pago Correcto");
-                    new VehiculoPlazaHttp(mycontext,myactivity).execute();
+                case "2":  Log.d("pagoM","Vehiculo Plaza Correcto");
+                    Intent goresumen = new Intent(myactivity, ConfirmacionActivity.class);
+                    goresumen.putExtra("user",SelectorTiempo.user);
+                    myactivity.startActivity(goresumen);
                     break;
             }
         }catch (Exception ex){
