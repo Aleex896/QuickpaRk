@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/grisclaro"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.alex.quickpark.RecargaActivity">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vehiculo: "
+            android:textSize="25dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:textColor="@color/negro"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:id="@+id/tVVigilante" />
+
+        <TextView
+            android:id="@+id/matricula"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/blanco"
+            android:textSize="25dp"
+            android:layout_alignBaseline="@+id/tVVigilante"
+            android:layout_alignBottom="@+id/tVVigilante"
+            android:layout_toEndOf="@+id/tVVigilante" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tVClock"
+            android:textSize="30dp"
+            android:textColor="@color/blanco"
+            android:layout_below="@+id/tVDate"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="26dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/blanco"
+            android:id="@+id/tVDate"
+            android:textSize="30dp"
+            android:layout_marginTop="32dp"
+            android:layout_below="@+id/matricula"
+            android:layout_alignEnd="@+id/tVClock" />
+
+        <Button
+            android:id="@+id/btRecargar"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Recargar esta plaza"
+            android:textAllCaps="false"
+            android:textSize="18dp"
+            android:textColor="@color/blanco"
+            android:background="@color/Azul"
+            android:layout_marginBottom="71dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="@color/Azul"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:id="@+id/relativeLayout"
+        android:layout_marginBottom="28dp"
+        android:layout_above="@+id/btRecargar"
+        android:layout_centerHorizontal="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Plaza:"
+                android:textColor="@color/negro"
+                android:textSize="25dp"
+                android:id="@+id/textView2"
+                android:layout_alignBaseline="@+id/textoqr"
+                android:layout_alignBottom="@+id/textoqr"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="15dp" />
+            <TextView
+                android:id="@+id/textoqr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:textColor="@color/blanco"
+                android:layout_marginTop="19dp"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/textView2"
+                android:layout_marginStart="11dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/negro"
+                android:text="Matricula del Vehiculo:"
+                android:textSize="20dp"
+                android:layout_below="@+id/textView2"
+                android:layout_alignStart="@+id/textView2"
+                android:layout_marginTop="18dp"
+                android:id="@+id/textView3" />
+
+            <TextView
+                android:id="@+id/matricula2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blanco"
+                android:textSize="25dp"
+                android:layout_alignBaseline="@+id/textView3"
+                android:layout_alignBottom="@+id/textView3"
+                android:layout_toEndOf="@+id/textView3"
+                android:layout_marginStart="12dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Puede aparcar hasta"
+                android:textColor="@color/negro"
+                android:textSize="25dp"
+                android:layout_marginTop="13dp"
+                android:layout_below="@+id/textView3"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/textView4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blanco"
+                android:textSize="25dp"
+                android:text="1234"
+                android:id="@+id/tVtiempolimite"
+                android:layout_below="@+id/fechausuario"
+                android:layout_alignEnd="@+id/fechausuario"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="9dp" />
+            <TextView
+                android:id="@+id/fechausuario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blanco"
+                android:text="hoas"
+                android:textSize="25dp"
+                android:layout_marginTop="19dp"
+                android:layout_below="@+id/textView4"
+                android:layout_centerHorizontal="true" />
+
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>

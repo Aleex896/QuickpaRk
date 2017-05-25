@@ -9,6 +9,8 @@
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+    <uses-feature android:name="android.hardware.camera" android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -29,7 +31,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".inicioregistro.RegistroActivity"
@@ -75,9 +76,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".gestionplaza.SelectorTiempo"
-            android:screenOrientation="portrait" >
-
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".monedero.MonederoActivity"
             android:screenOrientation="portrait" />
@@ -93,22 +92,24 @@
         <activity
             android:name=".pagos.ConfirmacionActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".pagos.ResumenPago"
+        <activity
+            android:name=".pagos.ResumenPago"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.braintreepayments.api.BraintreeBrowserSwitchActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait">
-
-        </activity>
-
-        <activity android:name="com.braintreepayments.api.BraintreeBrowserSwitchActivity"
-            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="${applicationId}.braintree" />
             </intent-filter>
         </activity>
-
-
+        <activity android:name=".RecargaActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

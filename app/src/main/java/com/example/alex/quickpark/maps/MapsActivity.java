@@ -15,10 +15,10 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.example.alex.quickpark.screeninicial.FirstScreen;
 import com.example.alex.quickpark.R;
 import com.example.alex.quickpark.ajustesusuario.AjustesActivity;
 import com.example.alex.quickpark.qr.IniciarQR;
+import com.example.alex.quickpark.screeninicial.FirstScreen;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;
@@ -44,10 +44,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     LocationRequest mLocationRequest;
     String user;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+
 
 
 

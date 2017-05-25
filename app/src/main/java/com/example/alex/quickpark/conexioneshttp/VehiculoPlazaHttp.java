@@ -1,16 +1,19 @@
 package com.example.alex.quickpark.conexioneshttp;
 
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.example.alex.quickpark.SelectCarActivity;
+import com.example.alex.quickpark.R;
+import com.example.alex.quickpark.RecargaActivity;
 import com.example.alex.quickpark.gestionplaza.SelectorTiempo;
 import com.example.alex.quickpark.pagos.ConfirmacionActivity;
-import com.example.alex.quickpark.pagos.ResumenPago;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -27,6 +30,8 @@ public class VehiculoPlazaHttp extends AsyncTask<Void,Void,String> {
 
     Context mycontext;
     Activity myactivity;
+
+    public static final int NOTIFICACION_ID=1;
 
     public VehiculoPlazaHttp(Context xcontext, Activity xactivity){
         mycontext = xcontext;
@@ -79,6 +84,12 @@ public class VehiculoPlazaHttp extends AsyncTask<Void,Void,String> {
                 case "1":Log.d("pagoM","Error Sevidor");
                     break;
                 case "2":  Log.d("pagoM","Vehiculo Plaza Correcto");
+
+                    generarnotificacion();
+
+                    guardardatos();
+
+
                     Intent goresumen = new Intent(myactivity, ConfirmacionActivity.class);
                     goresumen.putExtra("user",SelectorTiempo.user);
                     myactivity.startActivity(goresumen);
@@ -87,5 +98,33 @@ public class VehiculoPlazaHttp extends AsyncTask<Void,Void,String> {
         }catch (Exception ex){
             Log.d("errorI",ex.toString());
         }
+    }
+
+    private void guardardatos(){
+        SharedPreferences sharedPreferences = mycontext.getSharedPreferences("preferencias",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("matricula", SelectorTiempo.matricula);
+        editor.commit();
+    }
+
+    private void generarnotificacion()
+    {
+        Notification.Builder builder = new Notification.Builder(mycontext);
+
+        builder.setContentTitle("Quick Park");
+        builder.setContentText("Pulsa para recargar tu tiempo");
+        builder.setSmallIcon(R.drawable.icono_app);
+
+        Intent gorecarga = new Intent(myactivity, RecargaActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(mycontext, 0, gorecarga,0);
+
+        builder.setContentIntent(pendingIntent);
+        builder.setAutoCancel(false);
+
+        Notification notification = builder.build();
+        notification.flags |= Notification.FLAG_NO_CLEAR;
+
+        NotificationManager manager = (NotificationManager) mycontext.getSystemService(mycontext.NOTIFICATION_SERVICE);
+        manager.notify(NOTIFICACION_ID,notification);
     }
 }
