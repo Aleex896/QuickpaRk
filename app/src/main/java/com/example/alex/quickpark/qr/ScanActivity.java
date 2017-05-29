@@ -19,12 +19,16 @@ import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
 
 import java.io.IOException;
+import java.io.Serializable;
 
-public class ScanActivity extends AppCompatActivity {
+public class ScanActivity extends AppCompatActivity implements Serializable{
     SurfaceView cameraView;
     BarcodeDetector barcode;
     CameraSource cameraSource;
     SurfaceHolder holder;
+    String user;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +36,13 @@ public class ScanActivity extends AppCompatActivity {
         setContentView(R.layout.activity_qr_screen);
 
         Button flecha = (Button) findViewById(R.id.button2);
+        user = getIntent().getStringExtra("user");
 
         flecha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent gomaps = new Intent(ScanActivity.this, IniciarQR.class);
+                gomaps.putExtra("user",user);
                 startActivity(gomaps);
                 finish();
                 overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
@@ -109,6 +115,7 @@ public class ScanActivity extends AppCompatActivity {
                 {
                     Intent intent = new Intent();
                     intent.putExtra("barcode", barcode.valueAt(0));
+                    intent.putExtra("user",user);
                     setResult(RESULT_OK, intent);
                     finish();
                 }
@@ -120,6 +127,7 @@ public class ScanActivity extends AppCompatActivity {
     public void onBackPressed() {
         Intent goregistro = new Intent(ScanActivity.this, IniciarQR.class);
         goregistro.setFlags(goregistro.FLAG_ACTIVITY_NEW_TASK | goregistro.FLAG_ACTIVITY_CLEAR_TASK);
+        goregistro.putExtra("user",user);
         startActivity(goregistro);
         finish();
         overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);

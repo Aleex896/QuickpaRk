@@ -18,9 +18,11 @@ import com.example.alex.quickpark.gestionplaza.GestionPlaza;
 import com.example.alex.quickpark.maps.MapsActivity;
 import com.google.android.gms.vision.barcode.Barcode;
 
+import java.io.Serializable;
+
 import static com.google.zxing.integration.android.IntentIntegrator.REQUEST_CODE;
 
-public class IniciarQR extends AppCompatActivity {
+public class IniciarQR extends AppCompatActivity implements Serializable {
 
     private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 1;
     private String textoqr;
@@ -78,6 +80,7 @@ public class IniciarQR extends AppCompatActivity {
 
                 }
                 Intent intent = new Intent(IniciarQR.this, ScanActivity.class);
+                intent.putExtra("user",user);
                 startActivityForResult(intent, REQUEST_CODE);
 
 
