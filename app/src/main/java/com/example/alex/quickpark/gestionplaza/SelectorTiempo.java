@@ -37,11 +37,8 @@ import com.braintreepayments.api.models.PaymentMethodNonce;
 import com.example.alex.quickpark.R;
 import com.example.alex.quickpark.conexioneshttp.VehiculoPlazaHttp;
 import com.example.alex.quickpark.maps.MapsActivity;
-import com.example.alex.quickpark.monedero.UpdateMonedero;
 import com.example.alex.quickpark.pagos.ConfirmacionActivity;
 import com.example.alex.quickpark.pagos.PagoMonederoHttp;
-import com.example.alex.quickpark.pagos.RecargarActivity;
-import com.example.alex.quickpark.pagos.ResumenPago;
 
 import java.util.Calendar;
 import java.util.HashMap;

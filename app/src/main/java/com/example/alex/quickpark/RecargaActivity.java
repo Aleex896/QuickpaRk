@@ -6,12 +6,14 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.vision.text.TextRecognizer;
 
@@ -219,13 +221,13 @@ public class RecargaActivity extends AppCompatActivity {
 
 
                 timeusu = tiempo.toString();
-                //Toast.makeText(mycontext, "timeusu"+timeusu, Toast.LENGTH_SHORT).show();
+                Toast.makeText(mycontext, "timeusu"+timeusu, Toast.LENGTH_SHORT).show();
 
                 StringTokenizer toka = new StringTokenizer(timeusu,":");
                 selectedhorapref = toka.nextToken();
                 selectedminpref = toka.nextToken();
 
-                //Toast.makeText(mycontext, "hora"+selectedhorapref+"min"+selectedminpref, Toast.LENGTH_SHORT).show();
+                Toast.makeText(mycontext, "hora"+selectedhorapref+"min"+selectedminpref, Toast.LENGTH_SHORT).show();
 
 
             tvfecha.setText(fecha.substring(0,10).toString());
@@ -238,10 +240,55 @@ public class RecargaActivity extends AppCompatActivity {
 
                 generarnotificacion();
 
+                // THREAD PARA COMPROBAR CADA MINUTO EL TIEMPO QUE QUEDA
+                Thread comp = new Thread() {
+                    @Override
+                    public void run() {
+                        try {
+                            while (!isInterrupted()) {
+                                Thread.sleep(60000);
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        comprovarHora(horasfinales);
+                                    }
+                                });
+                            }
+                        } catch (InterruptedException e) {
+                        }
+                    }
+                };
+                comp.start();
+
             }
             catch(Exception ex)
             {
 
+            }
+        }
+
+        private void comprovarHora(int xtiempo){
+            int tiempo = xtiempo;
+
+            tiempo = tiempo - 1;
+
+            if(tiempo<=5)
+            {
+                NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+                notificationManager.cancel(1);
+
+                generarnotificacion();
+
+                MediaPlayer mp = MediaPlayer.create(RecargaActivity.this, R.raw.vehicle039);
+                mp.start();
+            }
+            else
+            {
+                if(tiempo==0)
+                {
+                    NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+                    notificationManager.cancel(1);
+                }
             }
         }
 
@@ -268,33 +315,51 @@ public class RecargaActivity extends AppCompatActivity {
 
         private int calcularminutos(String xselectedhorapref, String xselectedminpref){
             java.util.Date noteTS = Calendar.getInstance().getTime();
-            String hora;
-            String minutos;
+            String horasis;
+            String minutossis;
 
-            String selectedhora = "";
-            String selectedmin = "";
+            String selectedhora;
+            String selectedmin;
+            selectedhora = xselectedhorapref;
 
-
-            String time = "HH:mm:ss"; // 12:00
-            hora = android.text.format.DateFormat.format(time, noteTS).toString().substring(0,2);
-            minutos = android.text.format.DateFormat.format(time, noteTS).toString().substring(3,5);
-
-
-            horasfinales = Integer.parseInt(selectedhora) - Integer.parseInt(hora);
-
-
-            if(Integer.parseInt(selectedmin)>Integer.parseInt(minutos))
+            if(xselectedminpref.substring(0,1)=="0")
             {
-                minutosfinales = Integer.parseInt(selectedmin) - Integer.parseInt(minutos);
+                selectedmin= xselectedminpref.substring(1,2);
             }
             else
             {
-                minutosfinales = Integer.parseInt(minutos) - Integer.parseInt(selectedmin);
+                selectedmin= xselectedminpref;
             }
-            horasfinales = horasfinales*60;
-            tiempofinal = horasfinales + minutosfinales;
 
 
+            String time = "HH:mm:ss"; // 12:00
+            horasis = android.text.format.DateFormat.format(time, noteTS).toString().substring(0,2);
+            if(android.text.format.DateFormat.format(time, noteTS).toString().substring(3,4)=="0")
+            {
+                minutossis = android.text.format.DateFormat.format(time, noteTS).toString().substring(4,5);
+            }
+            else
+            {
+                minutossis = android.text.format.DateFormat.format(time, noteTS).toString().substring(3,5);
+            }
+
+            int horas;
+            int minutos;
+            int total;
+
+            horas = Integer.parseInt(selectedhora) * 60;
+            minutos = Integer.parseInt(selectedmin);
+            total = horas + minutos;
+
+            int horaA;
+            int minutosA;
+            int totalA;
+
+            horaA = Integer.parseInt(horasis) * 60;
+            minutosA = Integer.parseInt(minutossis);
+            totalA = horaA + minutosA;
+
+            tiempofinal = total - totalA;
 
             return tiempofinal;
         }
