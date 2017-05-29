@@ -42,7 +42,7 @@ public class VehiculoPlazaHttp extends AsyncTask<Void,Void,String> {
         String res= null;
         URL url;
         try{
-            url = new URL("http://25.103.185.238/quickpark/php/insertVehiculoPlaza.php?matricula="+ SelectorTiempo.matricula+"&plaza="+SelectorTiempo.plaza+"&tiempo="+ SelectorTiempo.tiempo +"&amount="+SelectorTiempo.amount +"&user="+SelectorTiempo.user);
+            url = new URL("http://25.103.185.238/quickpark/php/insertVehiculoPlaza.php?matricula="+ SelectorTiempo.matricula+"&plaza="+SelectorTiempo.plaza+"&tiempo="+ SelectorTiempo.tiempo +"&amount="+SelectorTiempo.amount +"&user="+SelectorTiempo.user +"&type="+SelectorTiempo.type);
             HttpURLConnection urlConnection=(HttpURLConnection)url.openConnection();
 
             Log.d("pagoM URL",url.toString());
@@ -92,6 +92,10 @@ public class VehiculoPlazaHttp extends AsyncTask<Void,Void,String> {
 
                     Intent goresumen = new Intent(myactivity, ConfirmacionActivity.class);
                     goresumen.putExtra("user",SelectorTiempo.user);
+                    SharedPreferences sharedPreferences = mycontext.getSharedPreferences("preferencias",Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("user", SelectorTiempo.user);
+                    editor.commit();
                     myactivity.startActivity(goresumen);
                     break;
             }

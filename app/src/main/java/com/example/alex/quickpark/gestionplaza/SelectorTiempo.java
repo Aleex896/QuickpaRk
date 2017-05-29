@@ -8,6 +8,7 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -65,7 +66,7 @@ public class SelectorTiempo extends AppCompatActivity{
     static Context context;
     static Activity activity;
 
-    public static String user,plaza,tiempo;
+    public static String user,plaza,tiempo,type;
     static CharSequence[] items={"Monedero","PayPal / CreditCard"};
     public static String matricula;
 
@@ -73,6 +74,8 @@ public class SelectorTiempo extends AppCompatActivity{
     private RelativeLayout rtiket;
     private TextView hasta;
     private int totalFinal;
+
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +85,21 @@ public class SelectorTiempo extends AppCompatActivity{
         matricula = getIntent().getStringExtra("matricula");
         user = getIntent().getStringExtra("user");
         plaza = getIntent().getStringExtra("plaza");
+
+        type="p";
+
+        if(matricula==null && user==null && plaza==null){
+            sharedPreferences = getSharedPreferences("preferencias", MODE_PRIVATE);
+            matricula = sharedPreferences.getString("matricula", String.valueOf(matricula));
+
+            sharedPreferences = getSharedPreferences("preferencias", MODE_PRIVATE);
+            user = sharedPreferences.getString("user", String.valueOf(matricula));
+
+            sharedPreferences = getSharedPreferences("preferencias", MODE_PRIVATE);
+            plaza = sharedPreferences.getString("plaza", String.valueOf(matricula));
+            type="r";
+        }
+
 
 
         clock = (TextView) findViewById(R.id.tVClock);
@@ -535,7 +553,7 @@ public class SelectorTiempo extends AppCompatActivity{
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(SelectorTiempo.this, "Successfully got token", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(SelectorTiempo.this, "Successfully got token", Toast.LENGTH_SHORT).show();
                         }
                     });
                     token = responseBody;
@@ -547,7 +565,7 @@ public class SelectorTiempo extends AppCompatActivity{
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(SelectorTiempo.this, "Failed to get token: " + ex.toString(), Toast.LENGTH_LONG).show();
+                            //Toast.makeText(SelectorTiempo.this, "Failed to get token: " + ex.toString(), Toast.LENGTH_LONG).show();
                         }
                     });
                 }

@@ -208,7 +208,7 @@ public class RecargarActivity extends AppCompatActivity implements Serializable{
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(RecargarActivity.this, "Successfully got token", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(RecargarActivity.this, "Successfully got token", Toast.LENGTH_SHORT).show();
                             llHolder.setVisibility(View.VISIBLE);
                         }
                     });
@@ -221,7 +221,7 @@ public class RecargarActivity extends AppCompatActivity implements Serializable{
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(RecargarActivity.this, "Failed to get token: " + ex.toString(), Toast.LENGTH_LONG).show();
+                            //Toast.makeText(RecargarActivity.this, "Failed to get token: " + ex.toString(), Toast.LENGTH_LONG).show();
                         }
                     });
                 }

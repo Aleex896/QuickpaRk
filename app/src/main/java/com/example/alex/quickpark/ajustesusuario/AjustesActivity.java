@@ -1,6 +1,8 @@
 package com.example.alex.quickpark.ajustesusuario;
 
+import android.app.Application;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -28,6 +30,7 @@ public class AjustesActivity extends AppCompatActivity implements Serializable {
         final ImageButton bAjuUs = (ImageButton) findViewById(R.id.bAjustesUsu);
         ImageButton bCars = (ImageButton) findViewById(R.id.bAjustesVehi);
         ImageButton bmone = (ImageButton) findViewById(R.id.bAjustesMon);
+        ImageButton bSalir = (ImageButton)findViewById(R.id.bSalirAjustes);
 
         user =getIntent().getStringExtra("user");
 
@@ -83,6 +86,13 @@ public class AjustesActivity extends AppCompatActivity implements Serializable {
             }
         });
 
+        bSalir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
         bCars.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -93,6 +103,8 @@ public class AjustesActivity extends AppCompatActivity implements Serializable {
                 overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
             }
         });
+
+
 
     }
     @Override

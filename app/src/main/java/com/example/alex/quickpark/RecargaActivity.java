@@ -1,8 +1,10 @@
 package com.example.alex.quickpark;
 
+import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,10 +13,29 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.braintreepayments.api.dropin.DropInActivity;
+import com.braintreepayments.api.dropin.DropInRequest;
+import com.braintreepayments.api.dropin.DropInResult;
+import com.braintreepayments.api.interfaces.HttpResponseCallback;
+import com.braintreepayments.api.internal.HttpClient;
+import com.braintreepayments.api.models.PaymentMethodNonce;
+import com.example.alex.quickpark.gestionplaza.SelectorTiempo;
+import com.example.alex.quickpark.monedero.UpdateMonedero;
+import com.example.alex.quickpark.pagos.ConfirmacionActivity;
+import com.example.alex.quickpark.pagos.RecargarActivity;
 import com.google.android.gms.vision.text.TextRecognizer;
 
 import org.json.JSONArray;
@@ -26,6 +47,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.StringTokenizer;
 
 public class RecargaActivity extends AppCompatActivity {
@@ -34,7 +57,6 @@ public class RecargaActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
 
     private String usuario;
-    public static final int REQUEST_CODE = 1;
 
     public static String timeusu;
 
@@ -70,11 +92,15 @@ public class RecargaActivity extends AppCompatActivity {
     private int horasfinales;
     private int minutosfinales;
 
+    Button bPay;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recarga);
         context = this.getApplicationContext();
+
+        bPay = (Button)findViewById(R.id.btRecargar);
 
         sharedPreferences = getSharedPreferences("preferencias", MODE_PRIVATE);
         matriculapref = sharedPreferences.getString("matricula", String.valueOf(matricula));
@@ -97,6 +123,11 @@ public class RecargaActivity extends AppCompatActivity {
         // quita la notificacion inicial
         NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.cancel(1);
+
+        SharedPreferences sharedPreferences = this.getSharedPreferences("preferencias",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("plaza", texto.getText().toString());
+        editor.commit();
 
 
         // THREAD ACTUALIZA EL TIMER DE LA HORA SUPERIOR
@@ -126,8 +157,19 @@ public class RecargaActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        bPay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RecargaActivity.this, SelectorTiempo.class);
+
+                startActivity(intent);
+
+            }
+        });
 
     }
+
+
     private void updateTextView() {
         java.util.Date noteTS = Calendar.getInstance().getTime();
 
@@ -138,11 +180,6 @@ public class RecargaActivity extends AppCompatActivity {
         fecha.setText(android.text.format.DateFormat.format(date, noteTS));
     }
 
-
-
-    public void notitiemporestante(int tiempofinal){
-
-    }
 
     public class consultaRecarga extends AsyncTask<Void,Void,JSONArray> {
 
@@ -221,13 +258,13 @@ public class RecargaActivity extends AppCompatActivity {
 
 
                 timeusu = tiempo.toString();
-                Toast.makeText(mycontext, "timeusu"+timeusu, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(mycontext, "timeusu"+timeusu, Toast.LENGTH_SHORT).show();
 
                 StringTokenizer toka = new StringTokenizer(timeusu,":");
                 selectedhorapref = toka.nextToken();
                 selectedminpref = toka.nextToken();
 
-                Toast.makeText(mycontext, "hora"+selectedhorapref+"min"+selectedminpref, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(mycontext, "hora"+selectedhorapref+"min"+selectedminpref, Toast.LENGTH_SHORT).show();
 
 
             tvfecha.setText(fecha.substring(0,10).toString());

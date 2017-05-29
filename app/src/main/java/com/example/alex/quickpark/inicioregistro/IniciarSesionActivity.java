@@ -100,35 +100,5 @@ public class IniciarSesionActivity extends AppCompatActivity implements Serializ
         return Typeface.createFromAsset(context.getAssets(), "fonts/Walkway SemiBold.ttf");
     }
 
-    public void generarXML(){
 
-        try {
-            //Creamos el serializer
-            XmlSerializer ser = Xml.newSerializer();
-
-            //Creamos un fichero en memoria interna
-            OutputStreamWriter fout =
-                    new OutputStreamWriter(
-                            openFileOutput("prueba_pull.xml",
-                                    Context.MODE_PRIVATE));
-            //Asignamos el resultado del serializer al fichero
-            ser.setOutput(fout);
-            //Construimos el XML
-            ser.startTag("", "usuario");
-
-            ser.startTag("", "mail");
-            ser.text(userMail);
-            ser.endTag("", "mail");
-
-            ser.endTag("", "usuario");
-
-            ser.endDocument();
-
-            fout.close();
-
-            Log.d("xml","creado");
-        }catch (Exception ex){
-            ex.printStackTrace();
-        }
-    }
 }
