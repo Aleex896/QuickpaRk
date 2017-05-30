@@ -7,12 +7,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import com.example.alex.quickpark.R;
 import com.example.alex.quickpark.inicioregistro.IniciarSesionActivity;
 import com.example.alex.quickpark.inicioregistro.RegistroActivity;
-import com.example.alex.quickpark.maps.MapsActivity;
 
 public class FirstScreen extends AppCompatActivity {
 
@@ -20,17 +18,6 @@ public class FirstScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_login);
-
-        // !!!!!!!!!!!!!!!!! ES TEST !!!!!!!!!!!!!!!!!
-                    ImageView test1 = (ImageView) findViewById(R.id.imageView2);
-                    test1.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Intent gomapstest = new Intent(FirstScreen.this, MapsActivity.class);
-                            startActivity(gomapstest);
-                        }
-                    });
-        // !!!!!!!!!!!!!!!!! ES TEST !!!!!!!!!!!!!!!!!
 
 
 

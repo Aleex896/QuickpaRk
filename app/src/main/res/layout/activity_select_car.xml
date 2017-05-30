@@ -82,6 +82,7 @@
                 <TextView
                     android:id="@+id/trMatricula"
                     android:textAlignment="center"
+                    android:textColor="@color/blanco"
                     android:layout_gravity="center_vertical"
                     android:textSize="20dp"
                     android:text="Matricula"/>
@@ -90,6 +91,7 @@
                     android:textAlignment="center"
                     android:layout_gravity="center_vertical"
                     android:textSize="20dp"
+                    android:textColor="@color/blanco"
                     android:text="Color"/>
             </TableRow>
         </TableLayout>

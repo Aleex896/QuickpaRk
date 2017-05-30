@@ -10,13 +10,7 @@
 
 
 
-    <ImageView
-        android:id="@+id/iVConfirm"
-        android:layout_marginTop="20dp"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/confirm"/>
+
     <TextView
         android:id="@+id/tVRcorrecto"
         android:layout_width="wrap_content"

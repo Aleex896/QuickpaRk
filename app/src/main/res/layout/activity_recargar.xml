@@ -69,8 +69,9 @@
             android:id="@+id/tvDineroRecarga"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Dinero que desea recargar"
+            android:text="Cantidad que desea recargar"
             android:textSize="18dp"
+
             android:textColor="@color/blanco"/>
         <EditText
             android:id="@+id/etDinero"
@@ -78,6 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:textSize="18dp"
+            android:inputType="number"
             android:textColor="@color/Azul"
             android:background="@color/blanco"/>
     </LinearLayout>

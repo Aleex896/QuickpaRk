@@ -92,12 +92,14 @@
                     android:textAlignment="center"
                     android:layout_gravity="center_vertical"
                     android:textSize="20dp"
+                    android:textColor="@color/blanco"
                     android:text="Matricula"/>
                 <TextView
                     android:id="@+id/trColor"
                     android:textAlignment="center"
                     android:layout_gravity="center_vertical"
                     android:textSize="20dp"
+                    android:textColor="@color/blanco"
                     android:text="Color"/>
             </TableRow>
         </TableLayout>

@@ -14,9 +14,9 @@
         android:text="Quick QR Scanner"
         android:textColor="@color/blanco"
         android:textSize="35dp"
-        android:layout_marginTop="31dp"
+        android:layout_marginTop="38dp"
         android:layout_alignParentTop="true"
-        android:layout_alignEnd="@+id/textExplicacion" />
+        android:layout_toEndOf="@+id/botonAtras" />
 
     <TextView
         android:id="@+id/textExplicacion"
@@ -39,9 +39,8 @@
         android:background="@drawable/flecha_izquierda"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="20dp"
-        android:layout_alignTop="@+id/tVtitulo"
-        android:layout_toStartOf="@+id/tVtitulo"
-        android:layout_marginTop="7dp" />
+        android:layout_above="@+id/textExplicacion"
+        android:layout_alignStart="@+id/textExplicacion" />
 
     <Button
         android:id="@+id/button2"
@@ -54,13 +53,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="107dp" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="21dp"
-        android:visibility="invisible"
-        android:layout_below="@+id/button2"
-        android:layout_centerHorizontal="true" />
+
 
 </RelativeLayout>
