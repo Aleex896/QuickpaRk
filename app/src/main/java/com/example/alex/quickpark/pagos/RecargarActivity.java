@@ -179,7 +179,8 @@ public class RecargarActivity extends AppCompatActivity implements Serializable{
 
     @Override
     public void onBackPressed() {
-        Intent goregistro = new Intent(RecargarActivity.this, MapsActivity.class);
+        Intent goregistro = new Intent(RecargarActivity.this, MonederoActivity.class);
+        goregistro.putExtra("user",user);
         startActivity(goregistro);
         finish();
         overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);

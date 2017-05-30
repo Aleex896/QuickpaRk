@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.alex.quickpark.R;
 import com.example.alex.quickpark.ajustesusuario.AjustesActivity;
+import com.example.alex.quickpark.maps.MapsActivity;
 import com.example.alex.quickpark.pagos.PagoActivity;
 import com.example.alex.quickpark.pagos.RecargarActivity;
 
@@ -66,6 +67,15 @@ public class MonederoActivity extends AppCompatActivity implements Serializable 
 
         new MonederoHttp(this).execute();
         new TransaccionesHttp(this).execute();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent goregistro = new Intent(MonederoActivity.this, AjustesActivity.class);
+        goregistro.putExtra("user",user);
+        startActivity(goregistro);
+        finish();
+        overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
     }
 
 
